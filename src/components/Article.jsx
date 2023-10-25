@@ -1,33 +1,34 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios';
-import ArticlesCard from './ArticlesCard';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ArticlesCard from "./ArticlesCard";
 
-
-function Article({articleID, setIsLoading, setError}) {
-  const [article, setArticle] = useState({})
+function Article({ articleID, isLoading, setIsLoading, error, setError }) {
+  const [article, setArticle] = useState({});
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     axios
-      .get(`https://northcoders-news-api-phe8.onrender.com/api/articles/${articleID}`)
-      .then(({data}) => {
-        setIsLoading(false)
-        setError(null)
-        setArticle(data)
+      .get(
+        `https://northcoders-news-api-phe8.onrender.com/api/articles/${articleID}`
+      )
+      .then(({ data }) => {
+        console.log(data);
+        setIsLoading(false);
+        setError(null);
+        setArticle(data);
       })
       .catch((err) => {
         setError(err);
-        setIsLoading(false)
+        setIsLoading(false);
       });
-  }, []);
+  }, [articleID]);
 
   return (
-    <main className='Article'>
+    <main className="Article">
       <h2>Article</h2>
       <ArticlesCard article={article}></ArticlesCard>
     </main>
-  )
+  );
 }
 
-export default Article
-
+export default Article;

@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/topics" element={<Topics isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} /*topic={topic} setTopic={setTopic}*/ />}></Route>
         <Route path="/articles" element={<Articles isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} setArticleID={setArticleID}/>}></Route>
-        <Route path="/article" element={<Article articleID={articleID} setIsLoading={setIsLoading} setError={setError}></Article>}></Route>
+        <Route path="/article" element={<Article articleID={articleID} isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}></Article>}></Route>
         {/* <Route path="/users" element={<Users/>}></Route> */}
         {/* <Route path="/login" element={<Login setUser={setUser} />}></Route> */}
         {/* <Route path="/profile" element={<Profile user={user} />}></Route> */}

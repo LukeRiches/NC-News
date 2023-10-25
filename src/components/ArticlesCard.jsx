@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 function ArticlesCard({ article, setArticleID }) {
+  if (article.author === undefined) {
+    return <p>Loading...</p>;
+  }
   if (article.body) {
     return (
       <main>
