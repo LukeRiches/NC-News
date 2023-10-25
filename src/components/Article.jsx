@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ArticlesCard from "./ArticlesCard";
+import { Outlet } from "react-router-dom";
 
 function Article({ articleID, isLoading, setIsLoading, error, setError }) {
   const [article, setArticle] = useState({});
@@ -12,7 +13,6 @@ function Article({ articleID, isLoading, setIsLoading, error, setError }) {
         `https://northcoders-news-api-phe8.onrender.com/api/articles/${articleID}`
       )
       .then(({ data }) => {
-        console.log(data);
         setIsLoading(false);
         setError(null);
         setArticle(data);
@@ -26,7 +26,8 @@ function Article({ articleID, isLoading, setIsLoading, error, setError }) {
   return (
     <main className="Article">
       <h2>Article</h2>
-      <ArticlesCard article={article}></ArticlesCard>
+      <ArticlesCard article={article}  isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></ArticlesCard>
+      <Outlet />
     </main>
   );
 }
