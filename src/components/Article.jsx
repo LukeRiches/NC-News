@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ArticlesCard from "./ArticlesCard";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function Article({ articleID, isLoading, setIsLoading, error, setError }) {
   const [article, setArticle] = useState({});
@@ -22,6 +22,10 @@ function Article({ articleID, isLoading, setIsLoading, error, setError }) {
         setIsLoading(false);
       });
   }, [articleID]);
+
+  if(articleID === null){
+    return <p>Individual Articles can only be accessed from within <Link to="/articles" >Articles</Link></p>
+  }
 
   return (
     <main className="Article">

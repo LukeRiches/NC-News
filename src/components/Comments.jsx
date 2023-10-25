@@ -22,8 +22,10 @@ function Comments({ articleID, isLoading, setIsLoading, error, setError }) {
       });
   }, [articleID]);
 
-
-  if (isLoading) {
+  if(articleID === null){
+    // return 
+  }
+  if (isLoading && articleID !== null) {
     return <p>Loading...</p>;
   }
   if (error) {
