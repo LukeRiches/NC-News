@@ -11,7 +11,6 @@ function Topics({isLoading, setIsLoading, error, setError}) {
     axios
       .get(`https://northcoders-news-api-phe8.onrender.com/api/topics`)
       .then(({data}) => {
-        console.log(data);
         setIsLoading(false)
         setError(null)
         setTopicList(data)
@@ -22,8 +21,6 @@ function Topics({isLoading, setIsLoading, error, setError}) {
       });
   }, []);
   
-  console.log(topicList);
-
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -33,11 +30,11 @@ function Topics({isLoading, setIsLoading, error, setError}) {
   }
 
   return (
-    <div>
-      <h3>Topics</h3>
+    <main>
+      <h2>Topics</h2>
         {/* <TopicSearch setItemList={setTopicList}/> */}
         <TopicsList topicList={topicList}/>
-    </div>
+    </main>
   )
 }
 

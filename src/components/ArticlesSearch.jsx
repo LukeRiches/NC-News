@@ -41,9 +41,9 @@ function ArticlesSearch({ setArticlesArray, setArticlesLength, limit, p, isLoadi
   }, [topic, sortBy, order, limit, p]);
 
   return (
-    <div className="Search">
+    <search>
       <form action="">
-        <label htmlFor="Search">Search for a topic</label>
+        <label htmlFor="Search">Search for a topic:</label>
         <input
           type="text"
           name="Search"
@@ -75,7 +75,7 @@ function ArticlesSearch({ setArticlesArray, setArticlesLength, limit, p, isLoadi
         </select>
 
       </form>
-    </div>
+    </search>
   );
 }
 

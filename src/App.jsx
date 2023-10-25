@@ -7,7 +7,6 @@ import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import Home from "./components/Home";
 
-/** user, topic, sortBy, order, commentBody */
 
 function App() {
   const [user, setUser] = useState("Login");
