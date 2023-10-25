@@ -6,17 +6,19 @@ import Nav from "./components/Nav";
 import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import Home from "./components/Home";
+import Article from "./components/Article";
 
-/** user, topic, sortBy, order, commentBody */
 
 function App() {
   const [user, setUser] = useState("Login");
+  const [articleID, setArticleID] = useState(null)
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   // const [topic, setTopic] = useState("");
   // const [sortBy, setsortBy] = useState("");
   // const [order, setOrder] = useState("");
-  // const [commentBody, setCommentBody] = useState("Login");
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [commentBody, setCommentBody] = useState("");
 
 
   return (
@@ -26,7 +28,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/topics" element={<Topics isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} /*topic={topic} setTopic={setTopic}*/ />}></Route>
-        <Route path="/articles" element={<Articles isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError}/>}></Route>
+        <Route path="/articles" element={<Articles isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} setArticleID={setArticleID}/>}></Route>
+        <Route path="/article" element={<Article articleID={articleID} setIsLoading={setIsLoading} setError={setError}></Article>}></Route>
         {/* <Route path="/users" element={<Users/>}></Route> */}
         {/* <Route path="/login" element={<Login setUser={setUser} />}></Route> */}
         {/* <Route path="/profile" element={<Profile user={user} />}></Route> */}

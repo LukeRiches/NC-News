@@ -23,7 +23,7 @@ function Search() {
   }, [search]);
 
   return (
-    <div className="Search">
+    <search >
       <form action="">
         <label htmlFor="Search">Search</label>
         <input
@@ -34,7 +34,7 @@ function Search() {
           onChange={createSearch}
         />
       </form>
-    </div>
+    </search>
   );
 }
 

@@ -4,7 +4,7 @@ function Nav({user}) {
 
   if(user === "Login"){
     return (
-      <nav className="Nav">
+      <nav>
       <Link to="/topics">Topics</Link>
       {" "}
       <Link to="/articles">Articles</Link>
@@ -14,7 +14,7 @@ function Nav({user}) {
     )
   } else {
     return (
-    <nav className="Nav">
+    <nav>
       <Link to="/topics">Topics</Link>
       {" "}
       <Link to="/articles">Articles</Link>
