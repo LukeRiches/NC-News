@@ -1,6 +1,6 @@
 import ArticlesCard from "./ArticlesCard";
 
-function ArticlesList({ articlesArray, isLoading, error }) {
+function ArticlesList({ articlesArray, isLoading, error, setArticleID }) {
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -11,7 +11,7 @@ function ArticlesList({ articlesArray, isLoading, error }) {
       <ol>
         {articlesArray.map((article) => {
           return (
-            <ArticlesCard article={article}></ArticlesCard>
+            <ArticlesCard article={article} setArticleID={setArticleID} key={`${article.article_id}`}></ArticlesCard>
           )
         })}
       </ol>
