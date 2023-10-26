@@ -16,8 +16,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  console.log(articleID);
-
   // const [topic, setTopic] = useState("");
   // const [sortBy, setsortBy] = useState("");
   // const [order, setOrder] = useState("");

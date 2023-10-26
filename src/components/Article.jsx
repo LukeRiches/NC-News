@@ -5,6 +5,8 @@ import { Link, Outlet } from "react-router-dom";
 
 function Article({ articleID, isLoading, setIsLoading, error, setError }) {
   const [article, setArticle] = useState({});
+  const [currentVotes, setCurrentVotes] = useState(null)
+  const [currentVotesBeforeChanges, setCurrentVotesBeforeChanges] = useState(null)
 
   useEffect(() => {
     setIsLoading(true);
@@ -16,6 +18,8 @@ function Article({ articleID, isLoading, setIsLoading, error, setError }) {
         setIsLoading(false);
         setError(null);
         setArticle(data);
+        setCurrentVotes(data.votes)
+        setCurrentVotesBeforeChanges(data.votes)
       })
       .catch((err) => {
         setError(err);
@@ -30,7 +34,7 @@ function Article({ articleID, isLoading, setIsLoading, error, setError }) {
   return (
     <main className="Article">
       <h2>Article</h2>
-      <ArticlesCard article={article}  isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></ArticlesCard>
+      <ArticlesCard article={article} currentVotesBeforeChanges={currentVotesBeforeChanges} currentVotes={currentVotes} setCurrentVotes={setCurrentVotes} isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></ArticlesCard>
       <Outlet />
     </main>
   );

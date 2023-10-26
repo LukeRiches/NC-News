@@ -22,8 +22,8 @@ function Comments({ articleID, isLoading, setIsLoading, error, setError }) {
       });
   }, [articleID]);
 
-  if(articleID === null){
-    // return 
+  if (articleID === null) {
+    // return
   }
   if (isLoading && articleID !== null) {
     return <p>Loading...</p>;
@@ -36,14 +36,19 @@ function Comments({ articleID, isLoading, setIsLoading, error, setError }) {
     );
   } else {
     return (
-      <ol>
-        {commentsArray.map((comment) => {
-
-          return (
-            <CommentsCard comment={comment} key={`comment-${comment.comment_id}`}></CommentsCard>
-          )
-        })}
-      </ol>
+      <section>
+        <h4>Comments:</h4>
+        <ol>
+          {commentsArray.map((comment) => {
+            return (
+              <CommentsCard
+                comment={comment}
+                key={`comment-${comment.comment_id}`}
+              ></CommentsCard>
+            );
+          })}
+        </ol>
+      </section>
     );
   }
 }
