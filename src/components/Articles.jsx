@@ -4,7 +4,7 @@ import ArticlesSearch from './ArticlesSearch';
 import ArticlesList from './ArticlesList';
 import Pagination from './pagination';
 
-function Articles({isLoading, setIsLoading, error, setError, setArticleID}) {
+function Articles({isLoading, setIsLoading, error, setError}) {
   const [articlesArray, setArticlesArray] = useState([])
   const [articlesLength, setArticlesLength] = useState(0)
 
@@ -26,7 +26,7 @@ function Articles({isLoading, setIsLoading, error, setError, setArticleID}) {
     <main className='Articles'>
       <h2>Articles</h2>
         <ArticlesSearch setArticlesArray={setArticlesArray} setArticlesLength={setArticlesLength} limit={limit} p={p} isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError}/>
-        <ArticlesList articlesArray={articlesArray } isLoading={isLoading} error={error} setArticleID={setArticleID}/>
+        <ArticlesList articlesArray={articlesArray } isLoading={isLoading} error={error} />
         <Pagination  articlesLength={articlesLength} limit={limit} setLimit={setLimit} p={p} setP={setP} isLoading={isLoading}/>
     </main>
   )

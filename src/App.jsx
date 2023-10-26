@@ -8,11 +8,12 @@ import Articles from "./components/Articles";
 import Home from "./components/Home";
 import Article from "./components/Article";
 import Comments from "./components/Comments";
+import ErrorPage from "./components/ErrorPage";
 
 
 function App() {
   const [user, setUser] = useState("Login");
-  const [articleID, setArticleID] = useState(null)
+  // const [articleID, setArticleID] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -27,11 +28,12 @@ function App() {
       <Header user={user} />
       <Nav user={user} />
       <Routes>
+        <Route path="*" element={<ErrorPage/>} />
         <Route path="/" element={<Home />}></Route>
         <Route path="/topics" element={<Topics isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} /*topic={topic} setTopic={setTopic}*/ />}></Route>
-        <Route path="/articles" element={<Articles isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} setArticleID={setArticleID}/>}></Route>
-        <Route path="/article" element={<Article articleID={articleID} isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}></Article>}>
-          <Route path="comments" element={<Comments articleID={articleID} isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></Comments>}></Route>
+        <Route path="/articles" element={<Articles isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError}/>}></Route>
+        <Route path="/article/:articleID" element={<Article  isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}></Article>}>
+          <Route path="comments" element={<Comments isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></Comments>}></Route>
         </Route>
         {/* <Route path="/users" element={<Users/>}></Route> */}
         {/* <Route path="/login" element={<Login setUser={setUser} />}></Route> */}
