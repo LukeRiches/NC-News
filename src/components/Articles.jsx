@@ -27,7 +27,7 @@ function Articles({isLoading, setIsLoading, error, setError}) {
       <h2>Articles</h2>
         <ArticlesSearch setArticlesArray={setArticlesArray} setArticlesLength={setArticlesLength} limit={limit} p={p} isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError}/>
         <ArticlesList articlesArray={articlesArray } isLoading={isLoading} error={error} />
-        <Pagination  articlesLength={articlesLength} limit={limit} setLimit={setLimit} p={p} setP={setP} isLoading={isLoading}/>
+        <Pagination  articlesLength={articlesLength} limit={limit} setLimit={setLimit} p={p} setP={setP} isLoading={isLoading} error={error}/>
     </main>
   )
 }

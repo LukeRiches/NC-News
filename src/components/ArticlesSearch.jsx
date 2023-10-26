@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 
 function ArticlesSearch({
   setArticlesArray,
@@ -11,11 +12,13 @@ function ArticlesSearch({
   error,
   setError,
 }) {
-  const [topic, setTopic] = useState("");
+  let [searchParams, setSearchParams] = useSearchParams();
 
-  const [sortBy, setSortBy] = useState("created_at");
+  const [topic, setTopic] = useState(searchParams.get("topic") || "");
 
-  const [order, setOrder] = useState("desc");
+  const [sortBy, setSortBy] = useState(searchParams.get("sortBy") || "created_at");
+
+  const [order, setOrder] = useState(searchParams.get("order") ||"desc");
 
   function topicOnChange(event) {
     const value = event.target.value;
@@ -46,8 +49,7 @@ function ArticlesSearch({
         setArticlesLength(data.total_count);
       })
       .catch((err) => {
-        console.log(err);
-        setError(err);
+        setError(err.message);
         setIsLoading(false);
       });
   }, [topic, sortBy, order, limit, p]);

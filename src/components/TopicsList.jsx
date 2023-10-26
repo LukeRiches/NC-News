@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 function AvailableTopicsList({topicList}) {
 
@@ -10,7 +11,7 @@ function AvailableTopicsList({topicList}) {
               <p>slug: {topic.slug}</p>
               <p>Description: {topic.description}</p>
             </div>
-            <button >View Related Articles</button>
+            <Link to={`../articles?topic=${topic.slug}`}><button >View Related Articles</button></Link>
           </li>
         );
       })}

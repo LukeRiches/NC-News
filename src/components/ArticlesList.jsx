@@ -5,7 +5,7 @@ function ArticlesList({ articlesArray, isLoading, error}) {
     return <p>Loading...</p>;
   }
   if (error) {
-    return <p>Error: {error.status} message: {error.msg}</p>;
+    return <p>Error Message: {error}</p>;
   } else {
     return (
       <ol>

@@ -19,6 +19,9 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading }) {
   if(isLoading){
     return 
   }
+  if(error){
+    return
+  }
 
   if (p === 1 && limit !== articlesLength) {
     return (
