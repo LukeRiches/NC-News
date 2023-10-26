@@ -1,5 +1,4 @@
-function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error }) {
-  // console.log(articlesLength);
+function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading }) {
 
   const pages = [];
 
@@ -16,17 +15,6 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
   const half = Math.ceil(articlesLength / 2);
 
   const quarter = Math.ceil(articlesLength / 4);
-
-  {/* <form>
-          <label htmlFor="limit">Cards per page:</label>
-          <select name="limit" id="limit" onChange={setLimit} value={limit}>
-            <option value="10">10</option>
-            <option value={half}>View Half</option>
-            <option  onClick={(()=>{
-              setLimit(articlesLength)
-            })}>View All</option>
-          </select>
-        </form> */}
 
   if(isLoading){
     return 

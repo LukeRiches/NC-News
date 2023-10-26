@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function AvailableTopicsList({topicList}) {
-  // console.log(topicList);
 
   return (
     <ol>
