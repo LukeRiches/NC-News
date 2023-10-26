@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Article from "./components/Article";
 import Comments from "./components/Comments";
 import ErrorPage from "./components/ErrorPage";
+import Comment from "./components/Comment";
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
   // const [articleID, setArticleID] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  //bring error states lower into topics, articles, and article to fix overide issue
+  //for status don't deconstruct data from response
 
   // const [topic, setTopic] = useState("");
   // const [sortBy, setsortBy] = useState("");
@@ -33,8 +36,11 @@ function App() {
         <Route path="/topics" element={<Topics isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} /*topic={topic} setTopic={setTopic}*/ />}></Route>
         <Route path="/articles" element={<Articles isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError}/>}></Route>
         <Route path="/article/:articleID" element={<Article  isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}></Article>}>
-          <Route path="comments" element={<Comments isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></Comments>}></Route>
+          <Route path="comments" element={<Comments isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></Comments>}>
+            <Route path="comment" element={<Comment isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}/>}></Route>
+          </Route>
         </Route>
+
         {/* <Route path="/users" element={<Users/>}></Route> */}
         {/* <Route path="/login" element={<Login setUser={setUser} />}></Route> */}
         {/* <Route path="/profile" element={<Profile user={user} />}></Route> */}

@@ -1,13 +1,14 @@
-
-function CommentsCard({comment}) {
+function CommentsCard({ comment }) {
   return (
     <li>
       <div className="Top">
         <h3>{comment.author}</h3>
-        <p>Created at: {comment.created_at}</p>
       </div>
       <p>{comment.body}</p>
-      <p>Votes: {comment.votes}</p>
+      <div className="Bottom">
+        <p>Votes: {comment.votes}</p>
+        <p>{comment.created_at.slice(0, 10)}</p>
+      </div>
     </li>
   );
 }
