@@ -1,6 +1,5 @@
 
 function AvailableTopicsList({topicList}) {
-  // console.log(topicList);
 
   return (
     <ol>

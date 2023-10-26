@@ -39,16 +39,19 @@ function ArticlesSearch({
         `https://northcoders-news-api-phe8.onrender.com/api/articles?topic=${topic}&sort_by=${sortBy}&order=${order}&limit=${limit}&p=${p}`
       )
       .then(({ data }) => {
+        console.log(data);
         setIsLoading(false);
         setError(null);
         setArticlesArray(data.articles);
         setArticlesLength(data.total_count);
       })
       .catch((err) => {
+        console.log(err);
         setError(err);
         setIsLoading(false);
       });
   }, [topic, sortBy, order, limit, p]);
+
 
   return (
     <search>
@@ -72,13 +75,12 @@ function ArticlesSearch({
             onChange={sortByOnChange}
             value={sortBy}
           >
-            <option value="article_id">article_id</option>
-            <option value="title">title</option>
-            <option value="topic">topic</option>
-            <option value="author">author</option>
-            <option value="created_at">created_at</option>
-            <option value="article_img_url">article_img_url</option>
-            <option value="votes">votes</option>
+            <option value="author">Author</option>
+            <option value="comment_count">Comment Count</option>
+            <option value="created_at">Created At</option>
+            <option value="title">Title</option>
+            <option value="topic">Topic</option>
+            <option value="votes">Votes</option>
           </select>
         </section>
 
@@ -90,8 +92,8 @@ function ArticlesSearch({
             onChange={orderOnChange}
             value={order}
           >
-            <option value="asc">asc</option>
-            <option value="desc">desc</option>
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
           </select>
         </section>
       </form>
