@@ -1,4 +1,4 @@
-function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading }) {
+function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error }) {
 
   const pages = [];
 

@@ -42,7 +42,6 @@ function ArticlesSearch({
         `https://northcoders-news-api-phe8.onrender.com/api/articles?topic=${topic}&sort_by=${sortBy}&order=${order}&limit=${limit}&p=${p}`
       )
       .then(({ data }) => {
-        console.log(data);
         setIsLoading(false);
         setError(null);
         setArticlesArray(data.articles);
