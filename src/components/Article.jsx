@@ -7,9 +7,9 @@ import ErrorPage from "./ErrorPage";
 function Article({ isLoading, setIsLoading, error, setError }) {
   const [article, setArticle] = useState({});
   const [currentVotes, setCurrentVotes] = useState(null);
-  const [currentVotesBeforeChanges, setCurrentVotesBeforeChanges] =
-    useState(null);
-
+  const [currentVotesBeforeChanges, setCurrentVotesBeforeChanges] = useState(null);
+  const [commented, setCommented] = useState(0)
+  const [deletedComment, setDeletedComment] = useState(0)
   const { articleID } = useParams();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function Article({ isLoading, setIsLoading, error, setError }) {
         setError(err.message);
         setIsLoading(false);
       });
-  }, [articleID]);
+  }, [articleID,commented, deletedComment]);
 
   if (articleID === null) {
     return (
@@ -56,7 +56,7 @@ function Article({ isLoading, setIsLoading, error, setError }) {
         error={error}
         setError={setError}
       ></ArticlesCard>
-      <Outlet />
+      <Outlet context={[commented, setCommented, deletedComment, setDeletedComment]}/>
     </main>
   );
 }

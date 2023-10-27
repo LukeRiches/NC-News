@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams, useOutletContext } from "react-router-dom";
 
-function Comment({ isLoading, setIsLoading, error, setError }) {
+function Comment({ isLoading, setIsLoading, error, setError, user }) {
   const { articleID } = useParams();
   const [commentBody, setCommentbody] = useState("");
-  const [commented, setCommented] = useOutletContext();
+  const [commented, setCommented,] = useOutletContext();
+  
+
 
   function bodyOnChange(event) {
     const value = event.target.value;
@@ -20,7 +22,7 @@ function Comment({ isLoading, setIsLoading, error, setError }) {
     axios
       .post(
         `https://northcoders-news-api-phe8.onrender.com/api/articles/${articleID}/comments`,
-        { username: "grumpy19", body: commentBody }
+        { username: user, body: commentBody }
       )
       .then((data) => {
         setIsLoading(false);
@@ -34,40 +36,51 @@ function Comment({ isLoading, setIsLoading, error, setError }) {
       });
   }
 
-  //   console.log(commentBody);
   if (isLoading) {
     return <p>Loading...</p>;
   }
   if (error) {
     return <ErrorPage error={error}></ErrorPage>;
   }
-  return (
-    <div className="PostComment">
+  if (user === "Login") {
+    return (
       <section>
-        <form
-          onSubmit={(event) => {
-            postComment(event);
-          }}
-        >
-
-          {/* <label htmlFor="Body">Body:</label> */}
-          <input
-            type="text"
-            name="Body"
-            id="Body"
-            value={commentBody}
-            onChange={bodyOnChange}
-            required
-          />
-          <button>Submit</button>
-        </form>
+        <p>
+          You can't comment until you <Link to="../../../login">sign in</Link>
+        </p>
+        <Link to="..">
+          <button>Cancel</button>
+        </Link>
       </section>
+    );
+  }
+  if (user !== "Login") {
+    return (
+      <div className="PostComment">
+        <section>
+          <form
+            onSubmit={(event) => {
+              postComment(event);
+            }}
+          >
+            <input
+              type="text"
+              name="Body"
+              id="Body"
+              value={commentBody}
+              onChange={bodyOnChange}
+              required={true}
+            />
+            <button>Submit</button>
+          </form>
+        </section>
 
-      <Link to="..">
-        <button>Cancel</button>
-      </Link>
-    </div>
-  );
+        <Link to="..">
+          <button>Cancel</button>
+        </Link>
+      </div>
+    );
+  }
 }
 
 export default Comment;
