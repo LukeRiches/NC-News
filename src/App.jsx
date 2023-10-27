@@ -27,13 +27,13 @@ function App() {
       <Routes>
         <Route path="*" element={<ErrorPage/>} />
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login setUser={setUser} />}></Route>
+        <Route path="/login" element={<Login setUser={setUser} isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}/>}></Route>
         {/* <Route path="/sign_up" element={<SignUp />}></Route> */}
         <Route path="/topics" element={<Topics isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError} /*topic={topic} setTopic={setTopic}*/ />}></Route>
         <Route path="/articles" element={<Articles isLoading={isLoading} setIsLoading={setIsLoading}  error={error} setError={setError}/>}></Route>
         <Route path="/article/:articleID" element={<Article  isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}></Article>}>
-          <Route path="comments" element={<Comments isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} ></Comments>}>
-            <Route path="comment" element={<Comment isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}/>}></Route>
+          <Route path="comments" element={<Comments isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError} user={user}></Comments>}>
+            <Route path="comment" element={<Comment user={user} isLoading={isLoading} setIsLoading={setIsLoading} error={error} setError={setError}/>}></Route>
           </Route>
         </Route>
 

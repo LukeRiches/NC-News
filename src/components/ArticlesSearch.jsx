@@ -55,10 +55,10 @@ function ArticlesSearch({
 
 
   return (
-    <search>
+    <section id="Search">
       <form action="">
         <section className="search">
-          <label htmlFor="Search">Search for a topic:</label>
+          <label htmlFor="Search">Search for a topic: </label>
           <input
             type="text"
             name="Search"
@@ -69,7 +69,7 @@ function ArticlesSearch({
         </section>
 
         <section className="search">
-          <label htmlFor="SortBy">SortBy</label>
+          <label htmlFor="SortBy">Sort By: </label>
           <select
             name="SortBy"
             id="SortBy"
@@ -86,7 +86,7 @@ function ArticlesSearch({
         </section>
 
         <section className="search">
-          <label htmlFor="Order">Order</label>
+          <label htmlFor="Order">Order: </label>
           <select
             name="Order"
             id="Order"
@@ -98,7 +98,7 @@ function ArticlesSearch({
           </select>
         </section>
       </form>
-    </search>
+    </section>
   );
 }
 

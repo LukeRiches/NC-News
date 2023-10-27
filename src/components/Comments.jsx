@@ -2,12 +2,13 @@ import { useEffect, useState} from "react";
 import axios from "axios";
 import CommentsCard from "./CommentsCard";
 import ErrorPage from "./ErrorPage";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useOutletContext, useParams } from "react-router-dom";
 
-function Comments({ isLoading, setIsLoading, error, setError }) {
+function Comments({ isLoading, setIsLoading, error, setError, user,}) {
   const { articleID } = useParams();
   const [commentsArray, setCommentsArray] = useState([]);
-  const [commented, setCommented] = useState(0)
+  const [commented, setCommented, deletedComment, setDeletedComment] = useOutletContext();
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,10 +26,10 @@ function Comments({ isLoading, setIsLoading, error, setError }) {
         }
       })
       .catch((err) => {
-        setError({err});
+        setError(err.message);
         setIsLoading(false);
       });
-  }, [articleID, commented]);
+  }, [articleID, commented, deletedComment]);
 
   if (error) {
     return (
@@ -49,6 +50,9 @@ function Comments({ isLoading, setIsLoading, error, setError }) {
             return (
               <CommentsCard
                 comment={comment}
+                user={user}
+                deletedComment={deletedComment}
+                setDeletedComment={setDeletedComment}
                 key={`comment-${comment.comment_id}`}
               ></CommentsCard>
             );

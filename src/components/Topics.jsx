@@ -16,7 +16,7 @@ function Topics({isLoading, setIsLoading, error, setError}) {
         setTopicList(data)
       })
       .catch((err) => {
-        setError(err);
+        setError(err.message);
         setIsLoading(false)
       });
   }, []);
