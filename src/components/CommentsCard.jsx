@@ -3,33 +3,33 @@ import { useState } from "react";
 import ErrorPage from "./ErrorPage";
 import { useOutletContext } from "react-router-dom";
 
-function CommentsCard({ comment, user, }) {
-  const [isLoading, setIsLoading] = useState(false);
+function CommentsCard({ comment, user, deleteIsLoading, setDeleteIsLoading, setCommentsArray }) {
   const [error, setError] = useState(null);
-  const [deletedComment, setDeletedComment] = useOutletContext();
-
-
+  const [commented, setCommented, deletedComment, setDeletedComment] = useOutletContext();
+  const [commentToBeDeleted, setCommentToBeDeleted] = useState(null) 
+  
   function deleteComment(event) {
-    event.preventDefault();
-    setIsLoading(true);
+    setDeleteIsLoading(true);
+    setCommentToBeDeleted(comment.comment_id)
     axios
       .delete(
         `https://northcoders-news-api-phe8.onrender.com/api/comments/${comment.comment_id}`,
       )
       .then((data) => {
         setDeletedComment(deletedComment + 1);
-        setIsLoading(false);
+
         setError(null);
       })
       .catch((err) => {
-        setIsLoading(false);
+        setDeleteIsLoading(false);
         setError(err.message);
-      });
+      })
   }
+
   if (error) {
     return <ErrorPage error={error}/>
   }
-  if(isLoading){
+  if(deleteIsLoading && comment.comment_id === commentToBeDeleted){
     return <p>Loading...</p>
   }
   if (user === comment.author) {

@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams, useOutletContext } from "react-router-dom";
 
-function Comment({ isLoading, setIsLoading, error, setError, user }) {
+function Comment({  user }) {
+  // const [postIsLoading, setPostIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { articleID } = useParams();
   const [commentBody, setCommentbody] = useState("");
-  const [commented, setCommented,] = useOutletContext();
+  const [commented, setCommented, postIsLoading, setPostIsLoading] = useOutletContext();
   
 
 
@@ -18,25 +20,24 @@ function Comment({ isLoading, setIsLoading, error, setError, user }) {
 
   function postComment(event) {
     event.preventDefault();
-    setIsLoading(true);
+    setPostIsLoading(true);
     axios
       .post(
         `https://northcoders-news-api-phe8.onrender.com/api/articles/${articleID}/comments`,
         { username: user, body: commentBody }
       )
       .then((data) => {
-        setIsLoading(false);
         setError(null);
         setCommentbody("");
         setCommented(commented + 1);
       })
       .catch((err) => {
-        setIsLoading(false);
+        setPostIsLoading(false);
         setError(err);
       });
   }
 
-  if (isLoading) {
+  if (postIsLoading) {
     return <p>Loading...</p>;
   }
   if (error) {

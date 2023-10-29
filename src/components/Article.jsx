@@ -4,13 +4,17 @@ import ArticlesCard from "./ArticlesCard";
 import { Link, Outlet, useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 
-function Article({ isLoading, setIsLoading, error, setError }) {
+function Article({}) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [article, setArticle] = useState({});
   const [currentVotes, setCurrentVotes] = useState(null);
   const [currentVotesBeforeChanges, setCurrentVotesBeforeChanges] = useState(null);
   const [commented, setCommented] = useState(0)
   const [deletedComment, setDeletedComment] = useState(0)
   const { articleID } = useParams();
+
+  // console.log(deletedComment);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,7 +37,7 @@ function Article({ isLoading, setIsLoading, error, setError }) {
         setError(err.message);
         setIsLoading(false);
       });
-  }, [articleID,commented, deletedComment]);
+  }, [articleID, commented, deletedComment]);
 
   if (articleID === null) {
     return (

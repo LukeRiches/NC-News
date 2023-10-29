@@ -3,7 +3,9 @@ import Search from './TopicSearch'
 import TopicsList from './TopicsList'
 import axios from 'axios'
 
-function Topics({isLoading, setIsLoading, error, setError}) {
+function Topics({}) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [topicList, setTopicList ] = useState([])
   
   useEffect(() => {

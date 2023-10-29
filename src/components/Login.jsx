@@ -4,8 +4,10 @@ import {useNavigate, Link} from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 
 
-function Login ({setUser, isLoading, setIsLoading, error, setError}) {
+function Login ({setUser}) {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [input, setInput] = useState("")
     const [validUsers, setValidUsers] = useState([])
     const [isValidUser, setIsValidUser] = useState()

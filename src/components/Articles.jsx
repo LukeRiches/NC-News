@@ -4,7 +4,9 @@ import ArticlesSearch from './ArticlesSearch';
 import ArticlesList from './ArticlesList';
 import Pagination from './pagination';
 
-function Articles({isLoading, setIsLoading, error, setError}) {
+function Articles({}) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [articlesArray, setArticlesArray] = useState([])
   const [articlesLength, setArticlesLength] = useState(0)
 
