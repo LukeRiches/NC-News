@@ -1,8 +1,14 @@
+import { SyncLoader } from "react-spinners";
 import ArticlesCard from "./ArticlesCard";
 
 function ArticlesList({ articlesArray, isLoading, error, user}) {
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div>
+        <p>Loading...</p>
+        <SyncLoader color="#36d7b7" margin={3} size={15} speedMultiplier={0.5}/>
+      </div>
+    )
   }
   if (error) {
     return <p>Error Message: {error}</p>;

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Search from './TopicSearch'
 import TopicsList from './TopicsList'
 import axios from 'axios'
+import { SyncLoader } from 'react-spinners'
 
 function Topics({}) {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +25,13 @@ function Topics({}) {
   }, []);
   
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div>
+        <h2>Loading Topics...</h2>
+        <SyncLoader color="#36d7b7" margin={3} size={15} speedMultiplier={0.5}/>
+      </div>
+
+    )
   }
 
   if (error) {

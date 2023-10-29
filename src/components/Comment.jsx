@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams, useOutletContext } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 
 function Comment({  user }) {
   // const [postIsLoading, setPostIsLoading] = useState(false);
@@ -38,7 +39,12 @@ function Comment({  user }) {
   }
 
   if (postIsLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div>
+        <p>Posting Comment</p>
+        <SyncLoader color="#36d7b7" margin={3} size={15} speedMultiplier={0.5}/>
+      </div>
+    )
   }
   if (error) {
     return <ErrorPage error={error}></ErrorPage>;
