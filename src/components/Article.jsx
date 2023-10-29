@@ -4,7 +4,7 @@ import ArticlesCard from "./ArticlesCard";
 import { Link, Outlet, useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 
-function Article({}) {
+function Article({user}) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [article, setArticle] = useState({});
@@ -59,6 +59,7 @@ function Article({}) {
         setIsLoading={setIsLoading}
         error={error}
         setError={setError}
+        user={user}
       ></ArticlesCard>
       <Outlet context={[commented, setCommented, deletedComment, setDeletedComment]}/>
     </main>

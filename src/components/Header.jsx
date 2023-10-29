@@ -4,7 +4,7 @@ function Header({user}) {
   if(user === "Login"){
     return (
     <header>
-        <h1>NC News</h1>
+    <Link to="/"><h1>NC News</h1></Link>
           <Link to="/login">
             <span>
                 {user}
@@ -15,7 +15,7 @@ function Header({user}) {
   } else {
     return (
     <header>
-        <h1>NC News</h1>
+    <Link to="/"><h1>NC News</h1></Link>
           {/* <Link to="/profile"> */}
             <span>
                 {user}

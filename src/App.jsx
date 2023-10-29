@@ -30,8 +30,8 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser}/>}></Route>
         {/* <Route path="/sign_up" element={<SignUp />}></Route> */}
         <Route path="/topics" element={<Topics />}></Route>
-        <Route path="/articles" element={<Articles />}></Route>
-        <Route path="/article/:articleID" element={<Article />}>
+        <Route path="/articles" element={<Articles/>}></Route>
+        <Route path="/article/:articleID" element={<Article user={user}/>}>
           <Route path="comments" element={<Comments user={user} />}>
             <Route path="comment" element={<Comment user={user}/>}></Route>
           </Route>

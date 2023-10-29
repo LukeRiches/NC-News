@@ -5,17 +5,11 @@ import { useState } from "react";
 
 function ArticlesCard({
   article,
-  isLoading,
-  setIsLoading,
-  error,
-  setError,
+  user,
   currentVotes, 
   setCurrentVotes,
   currentVotesBeforeChanges
 }) {
-
-  // console.log(currentVotes);
-  // console.log(currentVotesBeforeChanges);
 
   function upVote(){
     setCurrentVotes((currentCount) => currentCount + 1);
@@ -45,6 +39,38 @@ function ArticlesCard({
 
   if (article.author === undefined) {
     return <p>Loading...</p>;
+  }
+  if (user === "Login" && article.body && currentVotes === currentVotesBeforeChanges) {
+    return (
+      <main>
+        <div className="Top">
+          <h3>{article.topic}</h3>
+          <h4>{article.title}</h4>
+          <p>Author: {article.author}</p>
+        </div>
+        <div>
+          <p className="Body">{article.body}</p>
+          <img
+            src={article.article_img_url}
+            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+          />
+        </div>
+
+        <div className="Bottom">
+          <section className="Voting">
+           <p>votes: {currentVotes}</p>
+          </section>
+
+          <Link to="comments">
+            <button className="Comments"
+            >
+              💬 {article.comment_count}
+            </button>
+          </Link>
+          <section>Created: {(article.created_at).slice(0,10)}</section>
+        </div>
+      </main>
+    );
   }
   if (article.body && currentVotes === currentVotesBeforeChanges) {
     return (
