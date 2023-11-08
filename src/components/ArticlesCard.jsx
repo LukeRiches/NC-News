@@ -1,56 +1,75 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Comments from "./Comments";
 import axios from "axios";
 import { useState } from "react";
 
 function ArticlesCard({
   article,
-  isLoading,
-  setIsLoading,
-  error,
-  setError,
-  currentVotes, 
+  user,
+  currentVotes,
   setCurrentVotes,
-  currentVotesBeforeChanges
+  currentVotesBeforeChanges,
 }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [commentSectionIsOpened, setCommentSectionIsOpened] = useState(false);
+  const navigate = useNavigate();
 
-  // console.log(currentVotes);
-  // console.log(currentVotesBeforeChanges);
-
-  function upVote(){
+  function upVote() {
     setCurrentVotes((currentCount) => currentCount + 1);
-    setError(null)
+    setError(null);
     axios
-    .patch(`https://northcoders-news-api-phe8.onrender.com/api/articles/${article.article_id}`, {"inc_votes": 1})
-    .then(({data})=>{
-    })
-    .catch((error)=>{
-      setCurrentVotes((currentCount) => currentCount - 1);
-      setError('Something went wrong, please try again.');
-    })
+      .patch(
+        `https://northcoders-news-api-phe8.onrender.com/api/articles/${article.article_id}`,
+        { inc_votes: 1 }
+      )
+      .then(({ data }) => {})
+      .catch((error) => {
+        setCurrentVotes((currentCount) => currentCount - 1);
+        setError("Something went wrong, please try again.");
+      });
   }
 
-  function downVote(){
+  function downVote() {
     setCurrentVotes((currentCount) => currentCount - 1);
-    setError(null)
+    setError(null);
     axios
-    .patch(`https://northcoders-news-api-phe8.onrender.com/api/articles/${article.article_id}`, {"inc_votes": -1})
-    .then(({data})=>{
-    })
-    .catch((error)=>{
-      setCurrentVotes((currentCount) => currentCount + 1);
-      setError('Something went wrong, please try again.');
-    })
+      .patch(
+        `https://northcoders-news-api-phe8.onrender.com/api/articles/${article.article_id}`,
+        { inc_votes: -1 }
+      )
+      .then(({ data }) => {})
+      .catch((error) => {
+        setCurrentVotes((currentCount) => currentCount + 1);
+        setError("Something went wrong, please try again.");
+      });
   }
 
-  if (article.author === undefined) {
-    return <p>Loading...</p>;
+  function openComments() {
+    setCommentSectionIsOpened(true);
+    navigate("comments");
   }
-  if (article.body && currentVotes === currentVotesBeforeChanges) {
+
+  function closeComments() {
+    setCommentSectionIsOpened(false);
+    navigate(`/article/${article.article_id}`);
+  }
+
+  console.log(commentSectionIsOpened);
+  console.log(article);
+
+  if (
+    user === "Login" &&
+    article.body &&
+    currentVotes === currentVotesBeforeChanges &&
+    commentSectionIsOpened === false
+  ) {
     return (
       <main>
         <div className="Top">
-          <h3>{article.topic}</h3>
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
           <h4>{article.title}</h4>
           <p>Author: {article.author}</p>
         </div>
@@ -64,28 +83,28 @@ function ArticlesCard({
 
         <div className="Bottom">
           <section className="Voting">
-          {/* {error ? <p>{error}</p> : null} */}
-          <p>votes: {currentVotes}</p>
-          <button className="vote" onClick={upVote}>👍</button>
-          <button className="vote" onClick={downVote} >👎</button>
+            <p>votes: {currentVotes}</p>
           </section>
 
-          <Link to="comments">
-            <button className="Comments"
-            >
-              💬 {article.comment_count}
-            </button>
-          </Link>
-          <section>Created: {(article.created_at).slice(0,10)}</section>
+          <button onClick={openComments}>💬{article.comment_count}</button>
+
+          <section> {article.created_at.slice(0, 10)}</section>
         </div>
       </main>
     );
   }
-  if(currentVotes !== currentVotesBeforeChanges && currentVotes === (currentVotesBeforeChanges + 1)){
+  if (
+    user === "Login" &&
+    article.body &&
+    currentVotes === currentVotesBeforeChanges &&
+    commentSectionIsOpened === true
+  ) {
     return (
       <main>
         <div className="Top">
-          <h3>{article.topic}</h3>
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
           <h4>{article.title}</h4>
           <p>Author: {article.author}</p>
         </div>
@@ -99,27 +118,27 @@ function ArticlesCard({
 
         <div className="Bottom">
           <section className="Voting">
-          {/* {error ? <p>{error}</p> : null} */}
-          <p>votes: {currentVotes}</p>
-          <button className="vote" onClick={downVote}>👎</button>
+            <p>votes: {currentVotes}</p>
           </section>
 
-          <Link to="comments">
-            <button
-            >
-              💬 {article.comment_count}
-            </button>
-          </Link>
-          <section>Created: {(article.created_at).slice(0,10)}</section>
+          <button onClick={closeComments}>💬{article.comment_count}</button>
+
+          <section>{article.created_at.slice(0, 10)}</section>
         </div>
       </main>
     );
   }
-  if(currentVotes !== currentVotesBeforeChanges && currentVotes === (currentVotesBeforeChanges - 1)){
+  if (
+    article.body &&
+    currentVotes === currentVotesBeforeChanges &&
+    commentSectionIsOpened === false
+  ) {
     return (
       <main>
         <div className="Top">
-          <h3>{article.topic}</h3>
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
           <h4>{article.title}</h4>
           <p>Author: {article.author}</p>
         </div>
@@ -130,49 +149,236 @@ function ArticlesCard({
             alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
           />
         </div>
+        {error ? <p>{error}</p> : null}
+        <div className="Bottom">
+          <section className="Voting">
+            <p>votes: {currentVotes}</p>
+            <button className="vote" onClick={upVote}>
+              👍
+            </button>
+            <button className="vote" onClick={downVote}>
+              👎
+            </button>
+          </section>
+
+          <button onClick={openComments}>💬{article.comment_count}</button>
+
+          <section> {article.created_at.slice(0, 10)}</section>
+        </div>
+      </main>
+    );
+  }
+  if (
+    article.body &&
+    currentVotes === currentVotesBeforeChanges &&
+    commentSectionIsOpened === true
+  ) {
+    return (
+      <main>
+        <div className="Top">
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
+          <h4>{article.title}</h4>
+          <p>Author: {article.author}</p>
+        </div>
+        <div>
+          <p className="Body">{article.body}</p>
+          <img
+            src={article.article_img_url}
+            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+          />
+        </div>
+        {error ? <p>{error}</p> : null}
 
         <div className="Bottom">
           <section className="Voting">
-          {/* {error ? <p>{error}</p> : null} */}
-          <p>votes: {currentVotes}</p>
-          <button className="vote" onClick={upVote}>👍</button>
+            <p>votes: {currentVotes}</p>
+            <button className="vote" onClick={upVote}>
+              👍
+            </button>
+            <button className="vote" onClick={downVote}>
+              👎
+            </button>
           </section>
 
-          <Link to="comments">
-            <button
-            >
-              💬 {article.comment_count}
+          <button onClick={closeComments}>💬{article.comment_count}</button>
+
+          <section> {article.created_at.slice(0, 10)}</section>
+        </div>
+      </main>
+    );
+  }
+  if (
+    currentVotes !== currentVotesBeforeChanges &&
+    currentVotes === currentVotesBeforeChanges + 1 &&
+    commentSectionIsOpened === false
+  ) {
+    return (
+      <main>
+        <div className="Top">
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
+          <h4>{article.title}</h4>
+          <p>Author: {article.author}</p>
+        </div>
+        <div>
+          <p className="Body">{article.body}</p>
+          <img
+            src={article.article_img_url}
+            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+          />
+        </div>
+        {error ? <p>{error}</p> : null}
+        <div className="Bottom">
+          <section className="Voting">
+            <p>votes: {currentVotes}</p>
+            <button className="vote" onClick={downVote}>
+              👎
             </button>
-          </Link>
-          <section>Created: {(article.created_at).slice(0,10)}</section>
+          </section>
+
+          <button onClick={openComments}>💬{article.comment_count}</button>
+
+          <section> {article.created_at.slice(0, 10)}</section>
+        </div>
+      </main>
+    );
+  }
+  if (
+    currentVotes !== currentVotesBeforeChanges &&
+    currentVotes === currentVotesBeforeChanges + 1 &&
+    commentSectionIsOpened === true
+  ) {
+    return (
+      <main>
+        <div className="Top">
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
+          <h4>{article.title}</h4>
+          <p>Author: {article.author}</p>
+        </div>
+        <div>
+          <p className="Body">{article.body}</p>
+          <img
+            src={article.article_img_url}
+            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+          />
+        </div>
+        {error ? <p>{error}</p> : null}
+        <div className="Bottom">
+          <section className="Voting">
+            <p>votes: {currentVotes}</p>
+            <button className="vote" onClick={downVote}>
+              👎
+            </button>
+          </section>
+
+          <button onClick={closeComments}>💬{article.comment_count}</button>
+
+          <section> {article.created_at.slice(0, 10)}</section>
+        </div>
+      </main>
+    );
+  }
+  if (
+    currentVotes !== currentVotesBeforeChanges &&
+    currentVotes === currentVotesBeforeChanges - 1 &&
+    commentSectionIsOpened === false
+  ) {
+    return (
+      <main>
+        <div className="Top">
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
+          <h4>{article.title}</h4>
+          <p>Author: {article.author}</p>
+        </div>
+        <div>
+          <p className="Body">{article.body}</p>
+          <img
+            src={article.article_img_url}
+            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+          />
+        </div>
+        {error ? <p>{error}</p> : null}
+        <div className="Bottom">
+          <section className="Voting">
+            <p>votes: {currentVotes}</p>
+            <button className="vote" onClick={upVote}>
+              👍
+            </button>
+          </section>
+
+          <button onClick={openComments}>💬{article.comment_count}</button>
+
+          <section> {article.created_at.slice(0, 10)}</section>
+        </div>
+      </main>
+    );
+  }
+  if (
+    currentVotes !== currentVotesBeforeChanges &&
+    currentVotes === currentVotesBeforeChanges - 1 &&
+    commentSectionIsOpened === true
+  ) {
+    return (
+      <main>
+        <div className="Top">
+          <h3>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h3>
+          <h4>{article.title}</h4>
+          <p>Author: {article.author}</p>
+        </div>
+        <div>
+          <p className="Body">{article.body}</p>
+          <img
+            src={article.article_img_url}
+            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+          />
+        </div>
+        {error ? <p>{error}</p> : null}
+        <div className="Bottom">
+          <section className="Voting">
+            <p>votes: {currentVotes}</p>
+            <button className="vote" onClick={upVote}>
+              👍
+            </button>
+          </section>
+
+          <button onClick={closeComments}>💬{article.comment_count}</button>
+
+          <section> {article.created_at.slice(0, 10)}</section>
         </div>
       </main>
     );
   } else {
     return (
       <li>
-        <div>
-          <div className="Top">
-            <h3>{article.topic}</h3>
-            <h4>{article.title}</h4>
-            <p>Author: {article.author}</p>
-          </div>
-
-          <img
-            src={article.article_img_url}
-            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
-          />
-
-          <div className="BottomArticles">
-            <section>Votes: {article.votes}</section>
-            <section>Comments: {article.comment_count}</section>
-            <section>Created: {(article.created_at).slice(0,10)}</section>
-          </div>
-        </div>
         <Link to={`/article/${article.article_id}`}>
-          <button
-          >
-            View Article
+          <button>
+            <div className="Top">
+              <h3>
+                {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+              </h3>
+              <h4>{article.title}</h4>
+              <p>Author: {article.author}</p>
+            </div>
+
+            <img
+              src={article.article_img_url}
+              alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+            />
+
+            <div className="BottomArticles">
+              <section>Votes: {article.votes}</section>
+              <section>Comments: {article.comment_count}</section>
+              <section> {article.created_at.slice(0, 10)}</section>
+            </div>
           </button>
         </Link>
       </li>

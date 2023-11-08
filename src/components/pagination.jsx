@@ -1,5 +1,13 @@
-function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error }) {
-
+function Pagination({
+  articlesLength,
+  limit,
+  setLimit,
+  p,
+  setP,
+  isLoading,
+  error,
+  setSearchParams,
+}) {
   const pages = [];
 
   const availablePages = Math.ceil(articlesLength / limit);
@@ -16,17 +24,19 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
 
   const quarter = Math.ceil(articlesLength / 4);
 
-  if(isLoading){
-    return 
+  if (isLoading) {
+    return;
   }
-  if(error){
-    return
+  if (error) {
+    return;
   }
-
+  if (articlesLength === 0) {
+    return;
+  }
   if (p === 1 && limit !== articlesLength) {
     return (
       <footer>
-        <div className="Page Selection">
+        <div>
           {pages.map((page, index) => {
             return (
               <button
@@ -34,18 +44,33 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
                 onClick={() => {
                   window.scrollTo(0, 0);
                   setP(page);
+                  setSearchParams(
+                    (previous) => {
+                      previous.set("p", page);
+                      return previous;
+                    },
+                    { replace: true }
+                  );
                 }}
-                className={page === p ? "Current_Page" : ""}
+                className={page === p ? "Current_Page" : "PageSelection"}
               >
                 {page}
               </button>
             );
           })}
           <button
+            className="PageSelection"
             key="Next Page"
             onClick={() => {
               setP(next);
               window.scrollTo(0, 0);
+              setSearchParams(
+                (previous) => {
+                  previous.set("p", next);
+                  return previous;
+                },
+                { replace: true }
+              );
             }}
           >
             Next
@@ -53,8 +78,23 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
         </div>
 
         <button
+          className="PageSelection"
           onClick={() => {
             setLimit(articlesLength);
+            setSearchParams(
+              (previous) => {
+                previous.set("limit", articlesLength);
+                return previous;
+              },
+              { replace: true }
+            );
+            setSearchParams(
+              (previous) => {
+                previous.set("p", 1);
+                return previous;
+              },
+              { replace: true }
+            );
           }}
         >
           View All
@@ -65,12 +105,20 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
   if (p === availablePages && limit !== articlesLength) {
     return (
       <footer>
-        <div className="Page Selection">
+        <div>
           <button
+            className="PageSelection"
             key="Previous Page"
             onClick={() => {
               window.scrollTo(0, 0);
               setP(previous);
+              setSearchParams(
+                (previousUrl) => {
+                  previousUrl.set("p", previous);
+                  return previousUrl;
+                },
+                { replace: true }
+              );
             }}
           >
             Previous
@@ -82,19 +130,41 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
                 onClick={() => {
                   window.scrollTo(0, 0);
                   setP(page);
+                  setSearchParams(
+                    (previous) => {
+                      previous.set("p", page);
+                      return previous;
+                    },
+                    { replace: true }
+                  );
                 }}
-                className={page === p ? "Current_Page" : ""}
+                className={page === p ? "Current_Page" : "PageSelection"}
               >
                 {page}
               </button>
             );
           })}
         </div>
-        
+
         <button
+          className="PageSelection"
           onClick={() => {
             setP(1);
             setLimit(articlesLength);
+            setSearchParams(
+              (previous) => {
+                previous.set("limit", articlesLength);
+                return previous;
+              },
+              { replace: true }
+            );
+            setSearchParams(
+              (previous) => {
+                previous.set("p", 1);
+                return previous;
+              },
+              { replace: true }
+            );
           }}
         >
           View All
@@ -106,8 +176,16 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
     return (
       <footer>
         <button
+          className="PageSelection"
           onClick={() => {
             setLimit(10);
+            setSearchParams(
+              (previous) => {
+                previous.set("limit", 10);
+                return previous;
+              },
+              { replace: true }
+            );
           }}
         >
           Reset View
@@ -117,12 +195,20 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
   } else {
     return (
       <footer>
-        <div className="Page Selection">
+        <div>
           <button
+            className="PageSelection"
             key="Previous Page"
             onClick={() => {
               setP(p - 1);
               window.scrollTo(0, 0);
+              setSearchParams(
+                (previous) => {
+                  previous.set("p", p - 1);
+                  return previous;
+                },
+                { replace: true }
+              );
             }}
           >
             Previous
@@ -134,18 +220,33 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
                 onClick={() => {
                   window.scrollTo(0, 0);
                   setP(page);
+                  setSearchParams(
+                    (previous) => {
+                      previous.set("p", page);
+                      return previous;
+                    },
+                    { replace: true }
+                  );
                 }}
-                className={page === p ? "Current_Page" : ""}
+                className={page === p ? "Current_Page" : "PageSelection"}
               >
                 {page}
               </button>
             );
           })}
           <button
+            className="PageSelection"
             key="Next Page"
             onClick={() => {
               setP(p + 1);
               window.scrollTo(0, 0);
+              setSearchParams(
+                (previous) => {
+                  previous.set("p", p + 1);
+                  return previous;
+                },
+                { replace: true }
+              );
             }}
           >
             Next
@@ -153,9 +254,24 @@ function Pagination({ articlesLength, limit, setLimit, p, setP, isLoading, error
         </div>
 
         <button
+          className="PageSelection"
           onClick={() => {
             setP(1);
             setLimit(articlesLength);
+            setSearchParams(
+              (previous) => {
+                previous.set("limit", articlesLength);
+                return previous;
+              },
+              { replace: true }
+            );
+            setSearchParams(
+              (previous) => {
+                previous.set("p", 1);
+                return previous;
+              },
+              { replace: true }
+            );
           }}
         >
           View All

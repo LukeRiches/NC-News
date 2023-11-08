@@ -2,60 +2,80 @@ import axios from "axios";
 import { useState } from "react";
 import ErrorPage from "./ErrorPage";
 import { useOutletContext } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 
-function CommentsCard({ comment, user, }) {
-  const [isLoading, setIsLoading] = useState(false);
+function CommentsCard({
+  comment,
+  user,
+  deleteIsLoading,
+  setDeleteIsLoading,
+  setCommentsArray,
+}) {
   const [error, setError] = useState(null);
-  const [deletedComment, setDeletedComment] = useOutletContext();
-
+  const [commented, setCommented, deletedComment, setDeletedComment] =
+    useOutletContext();
+  const [commentToBeDeleted, setCommentToBeDeleted] = useState(null);
 
   function deleteComment(event) {
-    event.preventDefault();
-    setIsLoading(true);
+    setDeleteIsLoading(true);
+    setCommentToBeDeleted(comment.comment_id);
     axios
       .delete(
-        `https://northcoders-news-api-phe8.onrender.com/api/comments/${comment.comment_id}`,
+        `https://northcoders-news-api-phe8.onrender.com/api/comments/${comment.comment_id}`
       )
       .then((data) => {
         setDeletedComment(deletedComment + 1);
-        setIsLoading(false);
+
         setError(null);
       })
       .catch((err) => {
-        setIsLoading(false);
+        setDeleteIsLoading(false);
         setError(err.message);
       });
   }
+
   if (error) {
-    return <ErrorPage error={error}/>
+    return <ErrorPage error={error} />;
   }
-  if(isLoading){
-    return <p>Loading...</p>
+  if (deleteIsLoading && comment.comment_id === commentToBeDeleted) {
+    return (
+      <div>
+        <p>Deleting Comment</p>
+        <SyncLoader
+          color="#36d7b7"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
+      </div>
+    );
   }
   if (user === comment.author) {
     return (
       <li>
-        <div className="Top">
+        <div className="CommentInfo">
           <h3>{comment.author}</h3>
+          <p className="CommentDate">{comment.created_at.slice(0, 10)}</p>
         </div>
         <p>{comment.body}</p>
-        <div className="Bottom">
+        <div className="CommentInfoBottomSignedIn">
           <p>Votes: {comment.votes}</p>
-          <p>{comment.created_at.slice(0, 10)}</p>
-          <button onClick={deleteComment}>🗑️</button>
+          <button onClick={deleteComment} className="DeleteComment">
+            🗑️
+          </button>
         </div>
       </li>
     );
   } else {
     return (
       <li>
-        <div className="Top">
+        <div className="CommentInfo">
           <h3>{comment.author}</h3>
+          <p className="CommentDate">{comment.created_at.slice(0, 10)}</p>
         </div>
         <p>{comment.body}</p>
-        <div className="Bottom">
+        <div className="CommentInfoBottom">
           <p>Votes: {comment.votes}</p>
-          <p>{comment.created_at.slice(0, 10)}</p>
         </div>
       </li>
     );

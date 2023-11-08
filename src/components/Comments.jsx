@@ -1,14 +1,18 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import CommentsCard from "./CommentsCard";
 import ErrorPage from "./ErrorPage";
 import { Link, Outlet, useOutletContext, useParams } from "react-router-dom";
 
-function Comments({ isLoading, setIsLoading, error, setError, user,}) {
+function Comments({ user }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [postIsLoading, setPostIsLoading] = useState(false);
+  const [deleteIsLoading, setDeleteIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { articleID } = useParams();
   const [commentsArray, setCommentsArray] = useState([]);
-  const [commented, setCommented, deletedComment, setDeletedComment] = useOutletContext();
-
+  const [commented, setCommented, deletedComment, setDeletedComment] =
+    useOutletContext();
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,11 +22,13 @@ function Comments({ isLoading, setIsLoading, error, setError, user,}) {
       )
       .then(({ data }) => {
         setIsLoading(false);
-        if(data.msg){
+        if (data.msg) {
           setError(data.msg);
         } else {
           setError(null);
           setCommentsArray(data);
+          setPostIsLoading(false);
+          setDeleteIsLoading(false);
         }
       })
       .catch((err) => {
@@ -37,14 +43,18 @@ function Comments({ isLoading, setIsLoading, error, setError, user,}) {
         <h4>Comments:</h4>
         <ErrorPage error={error}></ErrorPage>
       </section>
-    )
-  } 
-  if(commentsArray.length > 1){
+    );
+  }
+  if (commentsArray.length) {
     return (
       <section>
         <h4>Comments:</h4>
-        <Link to="comment"><button>Comment</button></Link>
-        <Outlet context={[commented, setCommented]}/>
+        <Link to="comment">
+          <button>Comment</button>
+        </Link>
+        <Outlet
+          context={[commented, setCommented, postIsLoading, setPostIsLoading]}
+        />
         <ol>
           {commentsArray.map((comment) => {
             return (
@@ -53,6 +63,9 @@ function Comments({ isLoading, setIsLoading, error, setError, user,}) {
                 user={user}
                 deletedComment={deletedComment}
                 setDeletedComment={setDeletedComment}
+                deleteIsLoading={deleteIsLoading}
+                setDeleteIsLoading={setDeleteIsLoading}
+                setCommentsArray={setCommentsArray}
                 key={`comment-${comment.comment_id}`}
               ></CommentsCard>
             );
