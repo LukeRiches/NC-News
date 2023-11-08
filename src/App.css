@@ -24,7 +24,7 @@
     justify-content: center;
   }
 
-  form{
+  form {
     max-width: 70vw;
     display: flex;
     flex-direction: row;
@@ -33,14 +33,14 @@
     /* scale: 1; */
   }
 
-  .Login{
-    margin: 0 auto; 
+  .Login {
+    margin: 0 auto;
     max-width: 70vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     /* scale: 1; */
   }
 
@@ -50,10 +50,9 @@
 
   #Submit {
     padding: 1rem;
-
   }
 
-  .Comment{
+  .Comment {
     max-width: 40vw;
     display: flex;
     flex-direction: row;
@@ -63,7 +62,7 @@
     /* scale: 1; */
   }
 
-  .search{
+  .search {
     padding: 1rem;
     display: flex;
     flex-direction: row;
@@ -96,7 +95,7 @@
   }
 
   p {
-    max-width: 70vw;
+    max-width: 50vw;
     text-align: center;
     margin: 0 auto;
     padding: 1rem;
@@ -135,17 +134,75 @@
     max-width: 40vw;
   }
 
-  .PostComment{
+  .PostComment {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items:  center;
+    align-items: center;
     justify-content: space-between;
+  }
+
+  .TopicCard {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    width: 30vw;
   }
 
   /* #SideNote {
     max-width: 70vw ;
   } */
+
+  /* .CommentsButton {
+    position: relative;
+    left: -7%;
+  } */
+
+  #SideNote {
+    max-width: 40vw;
+  }
+
+  /* .DeleteComment {
+    position: relative;
+    top: auto;
+    left: 40vw;
+  } */
+
+  .CommentInfo {
+    position: relative;
+    top: auto;
+    left: -22vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .CommentInfoBottomSignedIn {
+    width: 100vw;
+    position: relative;
+    top: auto;
+    left: -20.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .CommentInfoBottom {
+    width: 100vw;
+    position: relative;
+    top: auto;
+    left: -23vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .CommentDate {
+    font-size: small;
+  }
 }
 
 @media only screen and (max-width: 850px) {
@@ -160,19 +217,19 @@
     max-width: 90vw;
   }
 
-  form{
+  form {
     max-width: 90vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     /* justify-content: space-between; */
     /* scale: 1; */
   }
-  .search{
+  .search {
     padding: 0.2rem;
   }
 
-  label{
+  label {
     /* padding: 1rem; */
   }
 
@@ -183,6 +240,15 @@
 
   .Current_Page {
     opacity: 50%;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 2.5vw;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
   }
 
   .Articles {
@@ -252,5 +318,80 @@
   .Comment {
     display: flex;
     align-items: end;
+  }
+
+  .PageSelection {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 2.5vw;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin: 1vw;
+  }
+
+  .TopicCard {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    width: 90vw;
+  }
+
+  .reset {
+    margin-top: 10px;
+  }
+
+  #Input {
+    margin: 3vw;
+  }
+
+  #Submit {
+    margin: 3vw;
+  }
+
+  #SideNote {
+    max-width: 100vw;
+    text-align: center;
+    margin: 5% 0;
+    padding: 0.2rem;
+  }
+
+  .CommentInfo {
+    position: relative;
+    top: auto;
+    left: -15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .CommentInfoBottomSignedIn {
+    width: 100vw;
+    position: relative;
+    top: auto;
+    left: -22vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .CommentInfoBottom {
+    width: 100vw;
+    position: relative;
+    top: auto;
+    left: -28vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .CommentDate {
+    font-size: small;
   }
 }

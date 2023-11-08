@@ -3,18 +3,18 @@ import axios from "axios";
 import ArticlesCard from "./ArticlesCard";
 import { Link, Outlet, useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
+import { SyncLoader } from "react-spinners";
 
-function Article({user}) {
+function Article({ user }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [article, setArticle] = useState({});
   const [currentVotes, setCurrentVotes] = useState(null);
-  const [currentVotesBeforeChanges, setCurrentVotesBeforeChanges] = useState(null);
-  const [commented, setCommented] = useState(0)
-  const [deletedComment, setDeletedComment] = useState(0)
+  const [currentVotesBeforeChanges, setCurrentVotesBeforeChanges] =
+    useState(null);
+  const [commented, setCommented] = useState(0);
+  const [deletedComment, setDeletedComment] = useState(0);
   const { articleID } = useParams();
-
-  // console.log(deletedComment);
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,20 +24,20 @@ function Article({user}) {
       )
       .then(({ data }) => {
         setIsLoading(false);
-        if (data.msg) {
-          setError(data.msg)
-        } else {
-          setError(null);
-          setArticle(data);
-          setCurrentVotes(data.votes);
-          setCurrentVotesBeforeChanges(data.votes);
-        }
+        setError(null);
+        setArticle(data);
+        setCurrentVotes(data.votes);
+        setCurrentVotesBeforeChanges(data.votes);
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err.response);
         setIsLoading(false);
       });
   }, [articleID, commented, deletedComment]);
+
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   if (articleID === null) {
     return (
@@ -47,6 +47,21 @@ function Article({user}) {
       </p>
     );
   }
+
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading Article...</h2>
+        <SyncLoader
+          color="#36d7b7"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
+      </div>
+    );
+  }
+
   return (
     <main className="Article">
       <h2>Article</h2>
@@ -55,13 +70,11 @@ function Article({user}) {
         currentVotesBeforeChanges={currentVotesBeforeChanges}
         currentVotes={currentVotes}
         setCurrentVotes={setCurrentVotes}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-        error={error}
-        setError={setError}
         user={user}
       ></ArticlesCard>
-      <Outlet context={[commented, setCommented, deletedComment, setDeletedComment]}/>
+      <Outlet
+        context={[commented, setCommented, deletedComment, setDeletedComment]}
+      />
     </main>
   );
 }

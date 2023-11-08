@@ -1,29 +1,28 @@
 import { SyncLoader } from "react-spinners";
 import ArticlesCard from "./ArticlesCard";
+import ErrorPage from "./ErrorPage";
 
-function ArticlesList({ articlesArray, isLoading, error, user}) {
+function ArticlesList({ articlesArray, isLoading, error, user }) {
   if (isLoading) {
-    return (
-      <div>
-        <p>Loading...</p>
-        <SyncLoader color="#36d7b7" margin={3} size={15} speedMultiplier={0.5}/>
-      </div>
-    )
+    return;
   }
   if (error) {
-    return <p>Error Message: {error}</p>;
+    return <ErrorPage error={error}></ErrorPage>;
   } else {
     return (
       <ol>
         {articlesArray.map((article) => {
           return (
-            <ArticlesCard article={article} user={user} key={`${article.article_id}`}></ArticlesCard>
-          )
+            <ArticlesCard
+              article={article}
+              user={user}
+              key={`${article.article_id}`}
+            ></ArticlesCard>
+          );
         })}
       </ol>
-  );
+    );
   }
-  
 }
 
 export default ArticlesList;

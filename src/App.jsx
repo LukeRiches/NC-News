@@ -15,8 +15,6 @@ import Login from "./components/Login";
 
 function App() {
   const [user, setUser] = useState("Login");
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   //bring error states lower into topics, articles, and article to fix overide issue
   //for status don't deconstruct data from response
 

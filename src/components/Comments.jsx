@@ -1,17 +1,18 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import CommentsCard from "./CommentsCard";
 import ErrorPage from "./ErrorPage";
 import { Link, Outlet, useOutletContext, useParams } from "react-router-dom";
 
-function Comments({user}) {
+function Comments({ user }) {
   const [isLoading, setIsLoading] = useState(true);
   const [postIsLoading, setPostIsLoading] = useState(false);
   const [deleteIsLoading, setDeleteIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { articleID } = useParams();
   const [commentsArray, setCommentsArray] = useState([]);
-  const [commented, setCommented, deletedComment, setDeletedComment] = useOutletContext();
+  const [commented, setCommented, deletedComment, setDeletedComment] =
+    useOutletContext();
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,7 +22,7 @@ function Comments({user}) {
       )
       .then(({ data }) => {
         setIsLoading(false);
-        if(data.msg){
+        if (data.msg) {
           setError(data.msg);
         } else {
           setError(null);
@@ -42,18 +43,21 @@ function Comments({user}) {
         <h4>Comments:</h4>
         <ErrorPage error={error}></ErrorPage>
       </section>
-    )
-  } 
-  if(commentsArray.length){
+    );
+  }
+  if (commentsArray.length) {
     return (
       <section>
         <h4>Comments:</h4>
-        <Link to="comment"><button>Comment</button></Link>
-        <Outlet context={[commented, setCommented, postIsLoading, setPostIsLoading]}/>
+        <Link to="comment">
+          <button>Comment</button>
+        </Link>
+        <Outlet
+          context={[commented, setCommented, postIsLoading, setPostIsLoading]}
+        />
         <ol>
           {commentsArray.map((comment) => {
             return (
-              
               <CommentsCard
                 comment={comment}
                 user={user}

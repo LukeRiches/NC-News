@@ -9,21 +9,21 @@ function Search() {
     setSearch(value);
   }
 
-  useEffect(() => {
-    axios
-      .get(`https://northcoders-news-api-phe8.onrender.com/api/topics`)
-      .then(({data}) => {
-        console.log(data);
-        // console.log(data.items);
-        setTopicList(data.items)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [search]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://northcoders-news-api-phe8.onrender.com/api/topics`)
+  //     .then(({data}) => {
+  //       console.log(data);
+  //       // console.log(data.items);
+  //       setTopicList(data.items)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [search]);
 
   return (
-    <search >
+    <search>
       <form action="">
         <label htmlFor="Search">Search</label>
         <input
