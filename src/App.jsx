@@ -12,26 +12,23 @@ import ErrorPage from "./components/ErrorPage";
 import Comment from "./components/Comment";
 import Login from "./components/Login";
 
-
 function App() {
   const [user, setUser] = useState("Login");
-  //bring error states lower into topics, articles, and article to fix overide issue
-  //for status don't deconstruct data from response
 
   return (
     <div className="App">
       <Header user={user} />
       <Nav user={user} />
       <Routes>
-        <Route path="*" element={<ErrorPage/>} />
+        <Route path="*" element={<ErrorPage />} />
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login setUser={setUser}/>}></Route>
+        <Route path="/login" element={<Login setUser={setUser} />}></Route>
         {/* <Route path="/sign_up" element={<SignUp />}></Route> */}
         <Route path="/topics" element={<Topics />}></Route>
-        <Route path="/articles" element={<Articles/>}></Route>
-        <Route path="/article/:articleID" element={<Article user={user}/>}>
+        <Route path="/articles" element={<Articles />}></Route>
+        <Route path="/article/:articleID" element={<Article user={user} />}>
           <Route path="comments" element={<Comments user={user} />}>
-            <Route path="comment" element={<Comment user={user}/>}></Route>
+            <Route path="comment" element={<Comment user={user} />}></Route>
           </Route>
         </Route>
 

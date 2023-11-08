@@ -55,9 +55,6 @@ function ArticlesCard({
     navigate(`/article/${article.article_id}`);
   }
 
-  console.log(commentSectionIsOpened);
-  console.log(article);
-
   if (
     user === "Login" &&
     article.body &&
