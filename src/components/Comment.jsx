@@ -3,14 +3,13 @@ import axios from "axios";
 import { Link, useParams, useOutletContext } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 
-function Comment({  user }) {
+function Comment({ user }) {
   // const [postIsLoading, setPostIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { articleID } = useParams();
   const [commentBody, setCommentbody] = useState("");
-  const [commented, setCommented, postIsLoading, setPostIsLoading] = useOutletContext();
-  
-
+  const [commented, setCommented, postIsLoading, setPostIsLoading] =
+    useOutletContext();
 
   function bodyOnChange(event) {
     const value = event.target.value;
@@ -42,9 +41,14 @@ function Comment({  user }) {
     return (
       <div>
         <p>Posting Comment</p>
-        <SyncLoader color="#36d7b7" margin={3} size={15} speedMultiplier={0.5}/>
+        <SyncLoader
+          color="#36d7b7"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
       </div>
-    )
+    );
   }
   if (error) {
     return <ErrorPage error={error}></ErrorPage>;
@@ -55,9 +59,7 @@ function Comment({  user }) {
         <p>
           You can't comment until you <Link to="../../../login">sign in</Link>
         </p>
-        <Link to="..">
-          <button>Cancel</button>
-        </Link>
+        <Link to="..">Cancel</Link>
       </section>
     );
   }
@@ -82,9 +84,7 @@ function Comment({  user }) {
           </form>
         </section>
 
-        <Link to="..">
-          <button>Cancel</button>
-        </Link>
+        <Link to="..">Cancel</Link>
       </div>
     );
   }

@@ -6,9 +6,7 @@ function ErrorPage({ error }) {
     return (
       <div>
         <ErrorMessage error={error} />
-        <Link to="/articles">
-          <button>View Articles</button>
-        </Link>
+        <Link to="/articles">View Articles </Link>
       </div>
     );
   }
@@ -16,9 +14,7 @@ function ErrorPage({ error }) {
     return (
       <div>
         <ErrorMessage error={error} />
-        <Link to="/topics">
-          <button>View Topics</button>
-        </Link>
+        <Link to="/topics">View Topics</Link>
       </div>
     );
   }
@@ -36,9 +32,7 @@ function ErrorPage({ error }) {
       <div>
         <h3>404: Page Not Found</h3>
         <h3>Sorry, this page doesn't exist :(</h3>
-        <Link to="/">
-          <button>Back to Home</button>
-        </Link>
+        <Link to="/">Back to Home</Link>
       </div>
     );
   }

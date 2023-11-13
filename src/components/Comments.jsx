@@ -49,9 +49,7 @@ function Comments({ user }) {
     return (
       <section>
         <h4>Comments:</h4>
-        <Link to="comment">
-          <button>Comment</button>
-        </Link>
+        <Link to="comment">comment</Link>
         <Outlet
           context={[commented, setCommented, postIsLoading, setPostIsLoading]}
         />

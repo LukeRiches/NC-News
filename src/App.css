@@ -13,7 +13,9 @@
   }
 
   .Current_Page {
-    opacity: 50%;
+    /* color: rgb(0 0 0 / 50%); */
+    background-color: #4b89ef;
+    color: white;
   }
 
   #Search {
@@ -40,7 +42,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     /* scale: 1; */
   }
 
@@ -149,7 +150,6 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
     width: 30vw;
@@ -203,6 +203,35 @@
   .CommentDate {
     font-size: small;
   }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80vw;
+    text-align: center;
+    right: -18.75vw;
+    position: relative;
+  }
+
+  .Title-Not-Signed-In {
+    position: relative;
+    top: auto;
+    /* left: 28%; */
+  }
+
+  .Title {
+    position: relative;
+    top: auto;
+    /* left: 36.5%; */
+  }
+
+  .login {
+    margin: inherit;
+    position: relative;
+    top: auto;
+    /* left: 30vw; */
+  }
 }
 
 @media only screen and (max-width: 850px) {
@@ -220,7 +249,7 @@
   form {
     max-width: 90vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     /* justify-content: space-between; */
     /* scale: 1; */
@@ -239,16 +268,22 @@
   }
 
   .Current_Page {
-    opacity: 50%;
+    /* color: rgb(0 0 0 / 50%); */
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 2.5vw;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
+    margin: 1vw;
+    background-color: #4b89ef;
+    color: white;
+  }
+
+  .Current_Page:hover {
+    background-color: #4b89ef;
   }
 
   .Articles {
@@ -327,7 +362,6 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
     margin: 1vw;
@@ -340,7 +374,6 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
     width: 90vw;
@@ -348,6 +381,8 @@
 
   .reset {
     margin-top: 10px;
+    padding: 0.5em 0.5em;
+    margin-left: 10px;
   }
 
   #Input {
@@ -394,4 +429,61 @@
   .CommentDate {
     font-size: small;
   }
+
+  #Search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+
+/* Style the header links */
+/* .links {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+} */
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+/* .logo {
+  font-size: 25px;
+  font-weight: bold;
+} */
+
+/* Change the background color on mouse-over */
+/* .links:hover {
+  background-color: #ddd;
+  color: black;
+} */
+
+/* Style the active/current link*/
+/* .links.active {
+  background-color: dodgerblue;
+  color: white;
+} */
+
+/* Float the link section to the right */
+/* .header-right {
+  float: right;
+}  */
+
+.comment_count {
+  font-size: x-small;
+  filter: invert(1);
+  text-align: center;
+  /* position: sticky; */
+  /* left: ; */
+  top: 7px;
 }

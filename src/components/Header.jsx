@@ -1,30 +1,28 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ user }) {
   if (user === "Login") {
     return (
       <header>
-        <Link to="/">
-          <h1>NC News</h1>
-        </Link>
-        <Link to="/login">
-          <button>
-            {user}
-          </button>
-        </Link>
+        {/* <NavLink to="/"> */}
+        <h1 className="Title-Not-Signed-In">NC News</h1>
+        {/* </NavLink> */}
+        <NavLink to="/login" className="login">
+          {user} {<FontAwesomeIcon icon={faUser} />}
+        </NavLink>
       </header>
     );
   } else {
     return (
       <header>
-        <Link to="/">
-          <h1>NC News</h1>
-        </Link>
-        {/* <Link to="/profile"> */}
-        <p>
-          {user}
-        </p>
-        {/* </Link> */}
+        {/* <NavLink to="/"> */}
+        <h1 className="Title">NC News</h1>
+        {/* </NavLink> */}
+        {/* <NavLink to="/profile"> */}
+        <p className="login">{user}</p>
+        {/* </NavLink> */}
       </header>
     );
   }

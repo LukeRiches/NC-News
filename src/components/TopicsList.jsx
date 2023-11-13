@@ -41,15 +41,13 @@ function AvailableTopicsList({ topicList }) {
       {topicList.map((topic) => {
         return (
           <li key={`${topic.slug}`}>
-            <Link to={`../articles?topic=${topic.slug}`}>
-              <button className="TopicCard">
-                <div className="card">
-                  <h3>
-                    {topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1)}
-                  </h3>
-                  <p>Description: {topic.description}</p>
-                </div>
-              </button>
+            <Link to={`../articles?topic=${topic.slug}`} className="TopicCard">
+              <div className="card">
+                <h3>
+                  {topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1)}
+                </h3>
+                <p>Description: {topic.description}</p>
+              </div>
             </Link>
           </li>
         );

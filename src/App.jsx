@@ -11,6 +11,7 @@ import Comments from "./components/Comments";
 import ErrorPage from "./components/ErrorPage";
 import Comment from "./components/Comment";
 import Login from "./components/Login";
+import HeaderAndNav from "../HeaderAndNav";
 
 function App() {
   const [user, setUser] = useState("Login");
@@ -19,6 +20,7 @@ function App() {
     <div className="App">
       <Header user={user} />
       <Nav user={user} />
+      {/* <HeaderAndNav user={user} /> */}
       <Routes>
         <Route path="*" element={<ErrorPage />} />
         <Route path="/" element={<Home />}></Route>

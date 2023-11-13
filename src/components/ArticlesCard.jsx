@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Comments from "./Comments";
 import axios from "axios";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 
 function ArticlesCard({
   article,
@@ -83,7 +85,10 @@ function ArticlesCard({
             <p>votes: {currentVotes}</p>
           </section>
 
-          <button onClick={openComments}>💬{article.comment_count}</button>
+          <button onClick={openComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section> {article.created_at.slice(0, 10)}</section>
         </div>
@@ -118,7 +123,10 @@ function ArticlesCard({
             <p>votes: {currentVotes}</p>
           </section>
 
-          <button onClick={closeComments}>💬{article.comment_count}</button>
+          <button onClick={closeComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section>{article.created_at.slice(0, 10)}</section>
         </div>
@@ -158,7 +166,10 @@ function ArticlesCard({
             </button>
           </section>
 
-          <button onClick={openComments}>💬{article.comment_count}</button>
+          <button onClick={openComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section> {article.created_at.slice(0, 10)}</section>
         </div>
@@ -199,7 +210,10 @@ function ArticlesCard({
             </button>
           </section>
 
-          <button onClick={closeComments}>💬{article.comment_count}</button>
+          <button onClick={closeComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section> {article.created_at.slice(0, 10)}</section>
         </div>
@@ -236,7 +250,10 @@ function ArticlesCard({
             </button>
           </section>
 
-          <button onClick={openComments}>💬{article.comment_count}</button>
+          <button onClick={openComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section> {article.created_at.slice(0, 10)}</section>
         </div>
@@ -273,7 +290,10 @@ function ArticlesCard({
             </button>
           </section>
 
-          <button onClick={closeComments}>💬{article.comment_count}</button>
+          <button onClick={closeComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section> {article.created_at.slice(0, 10)}</section>
         </div>
@@ -310,7 +330,10 @@ function ArticlesCard({
             </button>
           </section>
 
-          <button onClick={openComments}>💬{article.comment_count}</button>
+          <button onClick={openComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section> {article.created_at.slice(0, 10)}</section>
         </div>
@@ -347,7 +370,10 @@ function ArticlesCard({
             </button>
           </section>
 
-          <button onClick={closeComments}>💬{article.comment_count}</button>
+          <button onClick={closeComments}>
+            <FontAwesomeIcon icon={faComments} size="lg" />{" "}
+            {article.comment_count}
+          </button>
 
           <section> {article.created_at.slice(0, 10)}</section>
         </div>
@@ -357,26 +383,24 @@ function ArticlesCard({
     return (
       <li>
         <Link to={`/article/${article.article_id}`}>
-          <button>
-            <div className="Top">
-              <h3>
-                {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
-              </h3>
-              <h4>{article.title}</h4>
-              <p>Author: {article.author}</p>
-            </div>
+          <div className="Top">
+            <h3>
+              {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+            </h3>
+            <h4>{article.title}</h4>
+            <p>Author: {article.author}</p>
+          </div>
 
-            <img
-              src={article.article_img_url}
-              alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
-            />
+          <img
+            src={article.article_img_url}
+            alt={`A photo for the article, ${article.title}, uploaded by ${article.author}`}
+          />
 
-            <div className="BottomArticles">
-              <section>Votes: {article.votes}</section>
-              <section>Comments: {article.comment_count}</section>
-              <section> {article.created_at.slice(0, 10)}</section>
-            </div>
-          </button>
+          <div className="BottomArticles">
+            <section>Votes: {article.votes}</section>
+            <section>Comments: {article.comment_count}</section>
+            <section> {article.created_at.slice(0, 10)}</section>
+          </div>
         </Link>
       </li>
     );
