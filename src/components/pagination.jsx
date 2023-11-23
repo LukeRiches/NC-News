@@ -42,7 +42,11 @@ function Pagination({
               <button
                 key={index}
                 onClick={() => {
-                  window.scrollTo(0, 0);
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  });
                   setP(page);
                   setSearchParams(
                     (previous) => {
@@ -63,7 +67,11 @@ function Pagination({
             key="Next Page"
             onClick={() => {
               setP(next);
-              window.scrollTo(0, 0);
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+              });
               setSearchParams(
                 (previous) => {
                   previous.set("p", next);
@@ -110,7 +118,11 @@ function Pagination({
             className="PageSelection"
             key="Previous Page"
             onClick={() => {
-              window.scrollTo(0, 0);
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+              });
               setP(previous);
               setSearchParams(
                 (previousUrl) => {
@@ -128,7 +140,11 @@ function Pagination({
               <button
                 key={index}
                 onClick={() => {
-                  window.scrollTo(0, 0);
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  });
                   setP(page);
                   setSearchParams(
                     (previous) => {
@@ -201,7 +217,11 @@ function Pagination({
             key="Previous Page"
             onClick={() => {
               setP(p - 1);
-              window.scrollTo(0, 0);
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+              });
               setSearchParams(
                 (previous) => {
                   previous.set("p", p - 1);
@@ -218,7 +238,11 @@ function Pagination({
               <button
                 key={index}
                 onClick={() => {
-                  window.scrollTo(0, 0);
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  });
                   setP(page);
                   setSearchParams(
                     (previous) => {
@@ -239,7 +263,11 @@ function Pagination({
             key="Next Page"
             onClick={() => {
               setP(p + 1);
-              window.scrollTo(0, 0);
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+              });
               setSearchParams(
                 (previous) => {
                   previous.set("p", p + 1);

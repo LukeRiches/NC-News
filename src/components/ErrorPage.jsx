@@ -4,36 +4,36 @@ import ErrorMessage from "./ErrorMessage";
 function ErrorPage({ error }) {
   if (error !== undefined && error.data.msg === "Article does not exist") {
     return (
-      <div>
+      <section id="Error-Message">
         <ErrorMessage error={error} />
         <Link to="/articles">View Articles </Link>
-      </div>
+      </section>
     );
   }
   if (error !== undefined && error.data.msg === "Topic does not exist") {
     return (
-      <div>
+      <section id="Error-Message">
         <ErrorMessage error={error} />
         <Link to="/topics">View Topics</Link>
-      </div>
+      </section>
     );
   }
   if (error !== undefined && error.data.msg) {
     return (
-      <div>
+      <section id="Error-Message">
         <ErrorMessage error={error} />
         <Link to="/">
           <button>Back to Home</button>
         </Link>
-      </div>
+      </section>
     );
   } else {
     return (
-      <div>
+      <section id="Error-Message">
         <h3>404: Page Not Found</h3>
         <h3>Sorry, this page doesn't exist :(</h3>
         <Link to="/">Back to Home</Link>
-      </div>
+      </section>
     );
   }
 }

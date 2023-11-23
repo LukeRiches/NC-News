@@ -1,34 +1,162 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faList,
+  faBookOpen,
+  faUsers,
+  faNewspaper,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 
-function HeaderAndNav({ user }) {
-  if (user === "Login") {
+function HeaderAndNav({ user, small, medium, large }) {
+  if (user === "Login" && small) {
     return (
       <header>
-        <h1 className="logo">NC News</h1>
+        <Link to="/" className="logo">
+          <h1>{<FontAwesomeIcon icon={faNewspaper} />}</h1>
+        </Link>
+
+        {/* <nav className="HeaderMiddle">
+          <NavLink to="/">Home </NavLink>{" "}
+          <NavLink to="/topics">
+            Topics {<FontAwesomeIcon icon={faList} />}
+          </NavLink>{" "}
+          <NavLink to="/articles">
+            Articles {<FontAwesomeIcon icon={faBookOpen} />}
+          </NavLink>{" "}
+          <NavLink to="/users">
+            Users {<FontAwesomeIcon icon={faUsers} />}
+          </NavLink>
+        </nav> */}
+
+        {/* <div className="HeaderRight">
+          <NavLink to="/login" className="login">
+            {user} {<FontAwesomeIcon icon={faUser} />}
+          </NavLink>
+        </div> */}
+
+        <button className="bx bx-menu" id="menu-icon">
+          {<FontAwesomeIcon icon={faBars} />}
+        </button>
+      </header>
+    );
+  }
+  if (user === "Login" && medium) {
+    return (
+      <header>
+        <Link to="/" className="logo">
+          <h1>NC {<FontAwesomeIcon icon={faNewspaper} />}</h1>
+        </Link>
 
         <nav className="HeaderMiddle">
-          <Link to="/">
-            <button className="links">Home</button>
-          </Link>{" "}
-          <Link to="/topics">
-            <button className="links">Topics</button>
-          </Link>{" "}
-          <Link to="/articles">
-            <button className="links">Articles</button>
-          </Link>{" "}
-          <Link to="/users">
-            <button className="links">Users</button>
-          </Link>
+          {/* <NavLink to="/">Home </NavLink>{" "} */}
+          <NavLink to="/topics">
+            <div className="linkBox">
+              {<FontAwesomeIcon icon={faList} />}
+              <p className="linkText">Topics</p>
+            </div>
+          </NavLink>{" "}
+          <NavLink to="/articles">
+            <div className="linkBox">
+              {<FontAwesomeIcon icon={faBookOpen} />}
+              <p className="linkText">Articles</p>
+            </div>
+          </NavLink>{" "}
+          <NavLink to="/users">
+            <div className="linkBox">
+              {<FontAwesomeIcon icon={faUsers} />}
+              <p className="linkText">Users</p>
+            </div>
+          </NavLink>
+        </nav>
+
+        {/* <div className="HeaderRight">
+          <NavLink to="/login" className="login">
+            {user} {<FontAwesomeIcon icon={faUser} />}
+          </NavLink>
+        </div> */}
+
+        <button className="bx bx-menu" id="menu-icon">
+          {<FontAwesomeIcon icon={faBars} />}
+        </button>
+      </header>
+    );
+  }
+  if (user === "Login" && large) {
+    return (
+      <header>
+        <Link to="/" className="logo">
+          <h1>NC News {<FontAwesomeIcon icon={faNewspaper} />}</h1>
+        </Link>
+
+        <nav className="HeaderMiddle">
+          {/* <NavLink to="/">Home </NavLink>{" "} */}
+          <NavLink to="/topics">
+            <div className="linkBox">
+              {<FontAwesomeIcon icon={faList} />}
+              <p className="linkText">Topics</p>
+            </div>
+          </NavLink>{" "}
+          <NavLink to="/articles">
+            <div className="linkBox">
+              {<FontAwesomeIcon icon={faBookOpen} />}
+              <p className="linkText">Articles</p>
+            </div>
+          </NavLink>{" "}
+          <NavLink to="/users">
+            <div className="linkBox">
+              {<FontAwesomeIcon icon={faUsers} />}
+              <p className="linkText">Users</p>
+            </div>
+          </NavLink>
+        </nav>
+
+        {/* <div className="HeaderRight">
+          <NavLink to="/login" className="login">
+            {user} {<FontAwesomeIcon icon={faUser} />}
+          </NavLink>
+        </div> */}
+
+        <button className="bx bx-menu" id="menu-icon">
+          {<FontAwesomeIcon icon={faBars} />}
+        </button>
+      </header>
+    );
+  }
+  if (user === "Login" && !small && !medium && !large) {
+    return (
+      <header>
+        <Link to="/" className="logo">
+          <h1>NC {<FontAwesomeIcon icon={faNewspaper} />}</h1>
+        </Link>
+
+        <nav className="HeaderMiddle">
+          {/* <NavLink to="/">Home </NavLink>{" "} */}
+          <NavLink to="/topics">
+            Topics {<FontAwesomeIcon icon={faList} />}
+          </NavLink>{" "}
+          <NavLink to="/articles">
+            Articles {<FontAwesomeIcon icon={faBookOpen} />}
+          </NavLink>{" "}
+          <NavLink to="/users">
+            Users {<FontAwesomeIcon icon={faUsers} />}
+          </NavLink>
         </nav>
 
         <div className="HeaderRight">
-          <Link to="/login">
-            <button className="login">{user}</button>
-          </Link>
+          <NavLink to="/login" className="login">
+            {user} {<FontAwesomeIcon icon={faUser} />}
+          </NavLink>
         </div>
+
+        <button className="bx bx-menu" id="menu-icon">
+          {<FontAwesomeIcon icon={faBars} />}
+        </button>
       </header>
     );
-  } else {
+  }
+  if (user !== "Login" && !onMobile && !onTablet) {
     return (
       <header>
         <title className="HeaderLeft">
@@ -36,24 +164,25 @@ function HeaderAndNav({ user }) {
         </title>
 
         <nav className="HeaderMiddle">
-          <Link to="/topics" className="links">
-            <button>Topics</button>
-          </Link>{" "}
-          <Link to="/articles" className="links">
-            <button>Articles</button>
-          </Link>{" "}
-          <Link to="/users" className="links">
-            <button>Users</button>
-          </Link>{" "}
-          {/* <Link to="/posts" className="links">
+          <NavLink to="/">Home </NavLink>{" "}
+          <NavLink to="/topics">
+            Topics {<FontAwesomeIcon icon={faList} />}
+          </NavLink>{" "}
+          <NavLink to="/articles">
+            Articles {<FontAwesomeIcon icon={faBookOpen} />}
+          </NavLink>{" "}
+          <NavLink to="/users">
+            Users {<FontAwesomeIcon icon={faUsers} />}
+          </NavLink>{" "}
+          {/* <NavLink to="/posts">
             <button>Posts</button>
-          </Link> */}
+          </NavLink> */}
         </nav>
 
         <div className="HeaderRight">
-          {/* <Link to="/profile""> */}
+          {/* <NavLink to="/profile""> */}
           <p>{user}</p>
-          {/* </Link> */}
+          {/* </NavLink> */}
         </div>
       </header>
     );

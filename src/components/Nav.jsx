@@ -1,28 +1,61 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList, faBookOpen, faUsers } from "@fortawesome/free-solid-svg-icons";
+import {
+  faList,
+  faBookOpen,
+  faUsers,
+  faHouse,
+} from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 
 function Nav({ user }) {
   if (user === "Login") {
     return (
       <nav>
+        <NavLink to="/">
+          <div className="Link-Text">
+            Home {<FontAwesomeIcon icon={faHouse} />}
+          </div>
+        </NavLink>
         <NavLink to="/topics">
-          Topics {<FontAwesomeIcon icon={faList} />}
+          <div className="Link-Text">
+            Topics {<FontAwesomeIcon icon={faList} />}
+          </div>
         </NavLink>
         <NavLink to="/articles">
-          Articles {<FontAwesomeIcon icon={faBookOpen} />}
+          <div className="Link-Text">
+            Articles {<FontAwesomeIcon icon={faBookOpen} />}
+          </div>
         </NavLink>
         <NavLink to="/users">
-          Users {<FontAwesomeIcon icon={faUsers} />}
+          <div className="Link-Text">
+            Users {<FontAwesomeIcon icon={faUsers} />}
+          </div>
         </NavLink>
       </nav>
     );
   } else {
     return (
       <nav>
-        <NavLink to="/topics">Topics</NavLink>
-        <NavLink to="/articles">Articles </NavLink>
-        <NavLink to="/users">Users </NavLink>
+        <NavLink to="/">
+          <div className="Link-Text">
+            Home {<FontAwesomeIcon icon={faHouse} />}
+          </div>
+        </NavLink>
+        <NavLink to="/topics">
+          <div className="Link-Text">
+            Topics {<FontAwesomeIcon icon={faList} />}
+          </div>
+        </NavLink>
+        <NavLink to="/articles">
+          <div className="Link-Text">
+            Articles {<FontAwesomeIcon icon={faBookOpen} />}
+          </div>
+        </NavLink>
+        <NavLink to="/users">
+          <div className="Link-Text">
+            Users {<FontAwesomeIcon icon={faUsers} />}
+          </div>
+        </NavLink>
         {/* <NavLink to="/posts">Posts</NavLink>  */}
       </nav>
     );

@@ -6,7 +6,7 @@ import Pagination from "./pagination";
 import ErrorPage from "./ErrorPage";
 import { useSearchParams } from "react-router-dom";
 
-function Articles({}) {
+function Articles({ isLightMode, isDarkMode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [articlesArray, setArticlesArray] = useState([]);
@@ -31,6 +31,8 @@ function Articles({}) {
         setError={setError}
         searchParams={searchParams}
         setSearchParams={setSearchParams}
+        isLightMode={isLightMode}
+        isDarkMode={isDarkMode}
         // topicsList={topicsList}
       />
       <ArticlesList

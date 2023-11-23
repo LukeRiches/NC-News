@@ -12,25 +12,95 @@ import ErrorPage from "./components/ErrorPage";
 import Comment from "./components/Comment";
 import Login from "./components/Login";
 import HeaderAndNav from "../HeaderAndNav";
+import { useMediaQuery } from "react-responsive";
 
 function App() {
   const [user, setUser] = useState("Login");
+  const [createCommentIsOpened, setCreateCommentIsOpened] = useState(false);
+
+  const isDarkMode = useMediaQuery({
+    query: "(prefers-color-scheme: dark)",
+  });
+
+  const isLightMode = useMediaQuery({
+    query: "(prefers-color-scheme: light)",
+  });
+
+  const small = useMediaQuery({
+    query: "only screen and (max-width: 450px)",
+  });
+
+  const medium = useMediaQuery({
+    query: "only screen and (max-width: 750px)",
+  });
+
+  const large = useMediaQuery({
+    query: "only screen and (max-width: 1010px)",
+  });
 
   return (
     <div className="App">
       <Header user={user} />
       <Nav user={user} />
-      {/* <HeaderAndNav user={user} /> */}
+      {/* <HeaderAndNav user={user} small={small} medium={medium} large={large} /> */}
       <Routes>
         <Route path="*" element={<ErrorPage />} />
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login setUser={setUser} />}></Route>
+        <Route
+          path="/login"
+          element={
+            <Login
+              setUser={setUser}
+              isDarkMode={isDarkMode}
+              isLightMode={isLightMode}
+            />
+          }
+        ></Route>
         {/* <Route path="/sign_up" element={<SignUp />}></Route> */}
-        <Route path="/topics" element={<Topics />}></Route>
-        <Route path="/articles" element={<Articles />}></Route>
-        <Route path="/article/:articleID" element={<Article user={user} />}>
-          <Route path="comments" element={<Comments user={user} />}>
-            <Route path="comment" element={<Comment user={user} />}></Route>
+        <Route
+          path="/topics"
+          element={<Topics isDarkMode={isDarkMode} isLightMode={isLightMode} />}
+        ></Route>
+        <Route
+          path="/articles"
+          element={
+            <Articles isDarkMode={isDarkMode} isLightMode={isLightMode} />
+          }
+        ></Route>
+        <Route
+          path="/article/:articleID"
+          element={
+            <Article
+              user={user}
+              isDarkMode={isDarkMode}
+              isLightMode={isLightMode}
+              setCreateCommentIsOpened={setCreateCommentIsOpened}
+            />
+          }
+        >
+          <Route
+            path="comments"
+            element={
+              <Comments
+                user={user}
+                isDarkMode={isDarkMode}
+                isLightMode={isLightMode}
+                createCommentIsOpened={createCommentIsOpened}
+                setCreateCommentIsOpened={setCreateCommentIsOpened}
+              />
+            }
+          >
+            <Route
+              path="comment"
+              element={
+                <Comment
+                  user={user}
+                  setCreateCommentIsOpened={setCreateCommentIsOpened}
+                  isDarkMode={isDarkMode}
+                  isLightMode={isLightMode}
+                />
+              }
+            ></Route>
           </Route>
         </Route>
 
