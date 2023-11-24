@@ -136,33 +136,29 @@ button:focus {
   color: white;
 }
 
-#Submit {
-  color: black;
-}
-
 .PageSelection {
-  color: black;
+  color: white;
 }
 
 .searchOptions {
-  border-color: black;
-  color: black;
+  border-color: white;
+  color: white;
 }
 
 .Open-Comments-Not-Logged-In {
-  color: black;
+  color: white;
 }
 
 .Comment-Button {
-  color: black;
+  color: white;
 }
 
 .vote {
-  color: black;
+  color: white;
 }
 
 .reset {
-  color: black;
+  color: white;
 }
 
 @media (prefers-color-scheme: light) {
@@ -250,29 +246,33 @@ button:focus {
     border-bottom: 2px solid #4b89ef;
   }
 
+  #Submit {
+    color: black;
+  }
+
   .PageSelection {
-    color: white;
+    color: black;
   }
 
   .searchOptions {
-    border-color: white;
-    color: white;
+    border-color: black;
+    color: black;
   }
 
   .Open-Comments-Not-Logged-In {
-    color: white;
+    color: black;
   }
 
   .Comment-Button {
-    color: white;
+    color: black;
   }
 
   .vote {
-    color: white;
+    color: black;
   }
 
   .reset {
-    color: white;
+    color: black;
   }
 }
 
