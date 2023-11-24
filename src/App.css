@@ -1106,6 +1106,17 @@ button.vote:active {
   #cancel {
     margin: 2vw;
   }
+
+  .search {
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reset {
+    padding: 1.5vw;
+    margin-left: 1vw;
+  }
 }
 
 .linkText {
