@@ -3,6 +3,8 @@ import { useState } from "react";
 import ErrorPage from "./ErrorPage";
 import { useOutletContext } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function CommentsCard({
   comment,
@@ -10,6 +12,8 @@ function CommentsCard({
   deleteIsLoading,
   setDeleteIsLoading,
   setCommentsArray,
+  isLightMode,
+  isDarkMode,
 }) {
   const [error, setError] = useState(null);
   const [commented, setCommented, deletedComment, setDeletedComment] =
@@ -25,7 +29,6 @@ function CommentsCard({
       )
       .then((data) => {
         setDeletedComment(deletedComment + 1);
-
         setError(null);
       })
       .catch((err) => {
@@ -37,46 +40,67 @@ function CommentsCard({
   if (error) {
     return <ErrorPage error={error} />;
   }
-  if (deleteIsLoading && comment.comment_id === commentToBeDeleted) {
+  if (
+    deleteIsLoading &&
+    isLightMode &&
+    comment.comment_id === commentToBeDeleted
+  ) {
     return (
-      <div>
-        <p>Deleting Comment</p>
+      <section>
+        <h3>Deleting Comment...</h3>
         <SyncLoader
-          color="#36d7b7"
+          color="#4b89ef"
           margin={3}
           size={15}
           speedMultiplier={0.5}
         />
-      </div>
+      </section>
+    );
+  }
+  if (
+    deleteIsLoading &&
+    isDarkMode &&
+    comment.comment_id === commentToBeDeleted
+  ) {
+    return (
+      <section>
+        <h3>Deleting Comment...</h3>
+        <SyncLoader
+          color="#ef5f4b"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
+      </section>
     );
   }
   if (user === comment.author) {
     return (
-      <li>
-        <div className="CommentInfo">
+      <li id="Comment-Item">
+        <section className="CommentInfo">
           <h3>{comment.author}</h3>
           <p className="CommentDate">{comment.created_at.slice(0, 10)}</p>
-        </div>
-        <p>{comment.body}</p>
-        <div className="CommentInfoBottomSignedIn">
-          <p>Votes: {comment.votes}</p>
+        </section>
+        <p className="Comment-Text">{comment.body}</p>
+        <section className="CommentInfoBottomSignedIn">
+          <p className="Comment-Votes">Votes: {comment.votes}</p>
           <button onClick={deleteComment} className="DeleteComment">
-            🗑️
+            {<FontAwesomeIcon icon={faTrashCan} />}
           </button>
-        </div>
+        </section>
       </li>
     );
   } else {
     return (
-      <li>
-        <div className="CommentInfo">
+      <li id="Comment-Item">
+        <section className="CommentInfo">
           <h3>{comment.author}</h3>
           <p className="CommentDate">{comment.created_at.slice(0, 10)}</p>
-        </div>
-        <p>{comment.body}</p>
-        <div className="CommentInfoBottom">
-          <p>Votes: {comment.votes}</p>
-        </div>
+        </section>
+        <p className="Comment-Text">{comment.body}</p>
+        <section className="CommentInfoBottom">
+          <p className="Comment-Votes">Votes: {comment.votes}</p>
+        </section>
       </li>
     );
   }

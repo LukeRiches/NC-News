@@ -5,7 +5,7 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import { SyncLoader } from "react-spinners";
 
-function Article({ user }) {
+function Article({ user, isLightMode, isDarkMode, setCreateCommentIsOpened }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [article, setArticle] = useState({});
@@ -48,12 +48,26 @@ function Article({ user }) {
     );
   }
 
-  if (isLoading) {
+  if (isLoading && isLightMode) {
     return (
       <div>
         <h2>Loading Article...</h2>
         <SyncLoader
-          color="#36d7b7"
+          color="#4b89ef"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
+      </div>
+    );
+  }
+
+  if (isLoading && isDarkMode) {
+    return (
+      <div>
+        <h2>Loading Article...</h2>
+        <SyncLoader
+          color="#ef5f4b"
           margin={3}
           size={15}
           speedMultiplier={0.5}
@@ -71,6 +85,7 @@ function Article({ user }) {
         currentVotes={currentVotes}
         setCurrentVotes={setCurrentVotes}
         user={user}
+        setCreateCommentIsOpened={setCreateCommentIsOpened}
       ></ArticlesCard>
       <Outlet
         context={[commented, setCommented, deletedComment, setDeletedComment]}

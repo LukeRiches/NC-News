@@ -10,7 +10,7 @@ function ArticlesList({ articlesArray, isLoading, error, user }) {
     return <ErrorPage error={error}></ErrorPage>;
   } else {
     return (
-      <ol>
+      <ol id="Articles-List">
         {articlesArray.map((article) => {
           return (
             <ArticlesCard

@@ -1,19 +1,277 @@
-@media only screen and (min-width: 1024px) {
-  #root {
-    max-width: 90vw;
-    max-height: 90vw;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+#root {
+  max-width: 90vw;
+  max-height: 90vw;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* * {
+  transition: all 1s ease;
+} */
+
+header {
+  position: relative;
+  /* width: 90vw; */
+  margin: 1rem;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 1s ease;
+}
+
+#Search {
+  transition: all 1s ease;
+}
+
+.search {
+  transition: all 1s ease;
+  align-items: center;
+}
+
+select.searchOptions {
+  border: solid 1px;
+  padding: 0.25vw;
+  border-radius: 4px;
+  margin: 0.25vw;
+}
+
+.HeaderRight {
+  display: flex;
+  align-items: center;
+}
+
+#menu-icon {
+  z-index: 10001;
+  display: none;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+p.Comment-Text {
+  position: relative;
+  max-width: 60vw;
+}
+
+.CommentInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70vw;
+}
+
+section.Comment-Section {
+  /* max-width: 78vw; */
+}
+
+/* .Comment {
+  margin: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 41vw;
+  font-size: small;
+} */
+
+.Comment-Button {
+  padding: 0.5vw;
+}
+
+.CommentInfoBottom {
+  width: 60vw;
+  position: relative;
+  top: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1vw;
+}
+
+p.Comment-Votes {
+  margin: 0vw;
+  padding: 0vw;
+}
+.linkBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form.Login {
+  flex-direction: column;
+  padding-bottom: 2vw;
+}
+
+.Article-Interactions {
+  /* max-width: 80vw; */
+}
+
+.vote {
+  outline: 1px solid transparent;
+  border: 1px solid transparent;
+  /* border-radius: none; */
+  /* padding: none; */
+  background-color: transparent;
+  padding: 0vw 1vw;
+  /* font-size: larger; */
+}
+
+button.vote:hover {
+  border: solid 1px transparent;
+  outline: solid 1px transparent;
+}
+
+button.vote:active {
+  outline: solid 1px transparent;
+  border: solid 1px transparent;
+}
+
+.Create-Comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* height: 10vw; */
+  padding: 3vw;
+}
+
+.Close-Create-Comment {
+  font-size: small;
+  margin: 3vw;
+}
+
+.CommentDate {
+  font-size: small;
+  margin: 0vw;
+  padding: 1vw;
+}
+
+.Create-Comment-Message {
+  display: flex;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.CommentInfoBottomSignedIn {
+  width: 50vw;
+  position: relative;
+  top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw;
+}
+
+.Vote-Count {
+  width: 5vw;
+}
+
+.login {
+  margin: 0vw;
+}
+
+.Comment {
+  padding: 1vw;
+}
+
+.Comment-Input-Box {
+  /* font-family: inherit; */
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 1rem;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin: 1vw;
+
+  &::placeholder {
+    /* color: transparent; */
   }
 
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: relative;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: gray;
+}
+
+.Comment-Input-Box:focus {
+  ~ .form__label {
+    position: relative;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: white;
+    font-weight: 700;
+  }
+  &::placeholder {
+    color: transparent;
+  }
+  /* padding-bottom: 6px; */
+  /* font-weight: 700; */
+  border-width: 2px;
+  border-bottom: 2px solid #ef5f4b;
+  border-image-slice: 1;
+}
+
+.form__field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+#Input {
+  margin: 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.inputBox {
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 0.5vw 1vw;
+  font-size: medium;
+  transition: all 1s ease;
+}
+
+#errorMessage {
+  color: #ef5f4b;
+  font-weight: 700;
+}
+
+.Current_Page:focus {
+  outline: 1px solid white;
+}
+
+@media only screen and (min-width: 850px) {
   img {
-    max-width: 40vw;
+    max-width: 50vw;
     height: auto;
-  }
-
-  .Current_Page {
-    opacity: 50%;
+    transition: all 1s ease;
   }
 
   #Search {
@@ -40,27 +298,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     /* scale: 1; */
   }
 
-  #Input {
+  /* #Input {
     padding: 1rem;
-  }
+  } */
 
   #Submit {
     padding: 1rem;
   }
 
-  .Comment {
+  /* .Comment {
     max-width: 40vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    /* scale: 1; */
-  }
+    scale: 1;
+  } */
 
   .search {
     padding: 1rem;
@@ -98,16 +355,17 @@
     max-width: 50vw;
     text-align: center;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.5vw 0.2vw;
   }
 
   .Voting {
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
-  .Bottom {
-    max-width: 40vw;
+  .Article-Interactions {
+    max-width: 60vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -116,7 +374,7 @@
     margin: 0 auto;
   }
 
-  .BottomArticles {
+  .Articles-Interactions {
     max-width: 40vw;
     display: flex;
     flex-direction: row;
@@ -131,7 +389,8 @@
   }
 
   .Body {
-    max-width: 40vw;
+    max-width: 60vw;
+    transition: all 1s ease;
   }
 
   .PostComment {
@@ -149,70 +408,107 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
     width: 30vw;
   }
 
-  /* #SideNote {
-    max-width: 70vw ;
-  } */
-
-  /* .CommentsButton {
-    position: relative;
-    left: -7%;
-  } */
-
   #SideNote {
-    max-width: 40vw;
+    max-width: 60vw;
+    padding: 1rem;
   }
 
-  /* .DeleteComment {
-    position: relative;
-    top: auto;
-    left: 40vw;
-  } */
-
-  .CommentInfo {
-    position: relative;
-    top: auto;
-    left: -22vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .CommentInfoBottomSignedIn {
-    width: 100vw;
-    position: relative;
-    top: auto;
-    left: -20.5vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .CommentInfoBottom {
-    width: 100vw;
-    position: relative;
-    top: auto;
-    left: -23vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   .CommentDate {
     font-size: small;
+    margin: 0vw;
+    padding: 1vw;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 7vw;
+  }
+
+  .Title-Not-Signed-In {
+    position: relative;
+    top: auto;
+    /* left: 28%; */
+  }
+
+  .Title {
+    position: relative;
+    top: auto;
+    /* left: 36.5%; */
+  }
+
+  .login {
+    margin: inherit;
+    position: relative;
+    top: auto;
+    /* left: 30vw; */
+  }
+
+  a.Article-Card {
+    width: 55vw;
+  }
+
+  .Open-Comments-Not-Logged-In {
+    position: relative;
+    /* left: 1.2vw; */
+  }
+
+  .Close-Create-Comment {
+    margin: 0.5vw;
+  }
+
+  .Create-Comment {
+    padding: 1vw;
+  }
+
+  .Comment {
+    width: 35vw;
+    transition: all 1s ease;
+  }
+
+  .CommentInfoBottomSignedIn {
+    width: 45vw;
+  }
+
+  .Open-Comments-Logged-In {
+    position: relative;
+    right: 5vw;
+  }
+
+  .Vote-Count {
+    width: 9vw;
+  }
+
+  .vote {
+    padding: 0vw 0.5vw;
+  }
+
+  .activeVote {
+    padding: 0vw 0.5vw;
+  }
+  .Comment-Button {
+    padding: 1vw;
+    transition: all 1s ease;
+  }
+
+  .Comment-Input-Box {
+    width: 40vw;
+  }
+
+  .inputBox {
+    width: 20vw;
+    height: 2vw;
+    padding: 0.25vw 0.5vw;
   }
 }
 
 @media only screen and (max-width: 850px) {
-  #root {
-    max-width: 90vw;
-    max-height: 90vw;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-  }
   search {
     max-width: 90vw;
   }
@@ -220,7 +516,7 @@
   form {
     max-width: 90vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     /* justify-content: space-between; */
     /* scale: 1; */
@@ -234,21 +530,21 @@
   }
 
   img {
-    max-width: 70vw;
+    max-width: 55vw;
     height: auto;
+    transition: all 1s ease;
   }
 
   .Current_Page {
-    opacity: 50%;
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 2.5vw;
+    padding: 1.5vw;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
+    margin: 0.5vw;
   }
 
   .Articles {
@@ -256,7 +552,7 @@
     flex-direction: column;
     /* justify-content:space-evenly; */
     /* align-items: center; */
-    padding: 1rem;
+    padding-bottom: 1rem;
   }
 
   ol {
@@ -268,7 +564,7 @@
   }
 
   li {
-    margin: 20px;
+    margin: 1vw;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -286,19 +582,20 @@
   .Voting {
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
-  .Bottom {
-    max-width: 100vw;
+  .Article-Interactions {
+    max-width: 85vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding-bottom: 1rem;
     margin: 0 auto;
   }
 
-  .BottomArticles {
+  .Articles-Interactions {
     max-width: 100vw;
     display: flex;
     flex-direction: row;
@@ -311,26 +608,27 @@
   .Comments {
     padding: 1rem;
   }
+
   .Body {
-    max-width: 100vw;
+    max-width: 70vw;
+    transition: all 1s ease;
   }
 
-  .Comment {
+  /* .Comment {
     display: flex;
     align-items: end;
-  }
+  } */
 
   .PageSelection {
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 2.5vw;
+    padding: 1.5vw;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
-    margin: 1vw;
+    margin: 0.5vw;
   }
 
   .TopicCard {
@@ -340,58 +638,539 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
     width: 90vw;
   }
 
   .reset {
-    margin-top: 10px;
+    padding: 0.5em 0.5em;
+    margin-left: 10px;
   }
 
-  #Input {
+  /* #Input {
     margin: 3vw;
-  }
+  } */
 
   #Submit {
     margin: 3vw;
   }
 
   #SideNote {
-    max-width: 100vw;
+    max-width: 70vw;
     text-align: center;
-    margin: 5% 0;
-    padding: 0.2rem;
   }
 
-  .CommentInfo {
-    position: relative;
-    top: auto;
-    left: -15vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .CommentInfoBottomSignedIn {
-    width: 100vw;
-    position: relative;
-    top: auto;
-    left: -22vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .CommentInfoBottom {
-    width: 100vw;
-    position: relative;
-    top: auto;
-    left: -28vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   .CommentDate {
     font-size: small;
   }
+
+  #Search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a.Article-Card {
+    width: 55vw;
+    transition: all 1s ease;
+  }
+
+  .Open-Comments-Not-Logged-In {
+    position: relative;
+    left: 0vw;
+  }
+
+  .CommentInfoBottomSignedIn {
+    width: 65vw;
+  }
+
+  .Open-Comments-Logged-In {
+    position: relative;
+    right: 6vw;
+  }
+
+  .Comment-Input-Box {
+    width: 40vw;
+  }
+
+  .Vote-Count {
+    width: 9vw;
+    padding: 0.5vw;
+  }
+
+  .vote {
+    padding: 0vw 1vw;
+  }
+
+  #SideNote {
+    padding: 2vw;
+  }
+
+  .activeVote {
+    padding: 0vw 1vw;
+  }
+
+  .Comment-Button {
+    padding: 1vw;
+    font-size: medium;
+    transition: all 1s ease;
+  }
+
+  .Comment {
+    width: 30vw;
+    transition: all 1s ease;
+  }
+
+  .inputBox {
+    width: 25vw;
+    height: 2.5vw;
+  }
 }
+
+.comment_count {
+  font-size: x-small;
+  filter: invert(1);
+  text-align: center;
+  /* position: sticky; */
+  /* left: ; */
+  top: 7px;
+}
+
+@media only screen and (min-width: 1250px) {
+  a.Article-Card {
+    width: 40vw;
+    transition: all 1s ease;
+  }
+
+  img {
+    max-width: 35vw;
+    transition: all 1s ease;
+  }
+
+  #SideNote {
+    max-width: 40vw;
+  }
+
+  .Article-Interactions {
+    max-width: 40vw;
+    transition: all 1s ease;
+  }
+
+  .Open-Comments-Not-Logged-In {
+    /* left: 0.7vw; */
+  }
+
+  .Body {
+    max-width: 40vw;
+    transition: all 1s ease;
+  }
+
+  p.Comment-Text {
+    width: 50vw;
+    transition: all 1s ease;
+  }
+
+  .CommentInfoBottom {
+    width: 50vw;
+    transition: all 1s ease;
+  }
+
+  .Comment {
+    width: 42vw;
+    transition: all 1s ease;
+  }
+
+  .CommentInfoBottomSignedIn {
+    width: 50vw;
+    transition: all 1s ease;
+  }
+
+  .Open-Comments-Logged-In {
+    position: relative;
+    right: 3.5vw;
+    /* transition: all 1s ease; */
+  }
+
+  .Vote-Count {
+    width: 5vw;
+    transition: all 1s ease;
+  }
+
+  .Comment-Button {
+    padding: 1vw;
+    transition: all 1s ease;
+  }
+
+  .CommentInfo {
+    width: 60vw;
+    transition: all 1s ease;
+  }
+
+  .Comment-Input-Box {
+    width: 25vw;
+  }
+
+  #Input {
+    margin: 0.5vw;
+  }
+
+  .inputBox {
+    width: 15vw;
+    height: 1.5vw;
+  }
+
+  .inputBox {
+    border: 1px solid;
+    border-radius: 4px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  #menu-icon {
+    display: block;
+  }
+  header {
+    transition: all 1s ease;
+    width: 78vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 0vw 2vw;
+  }
+
+  .TopicCard {
+    width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  /* nav {
+    right: 30px;
+  } */
+  h1 {
+    font-size: x-large;
+    transition: all 1s ease;
+  }
+
+  .TopicCard {
+    width: 50vw;
+    transition: all 1s ease;
+  }
+
+  .Card {
+    width: 60vw;
+    transition: all 1s ease;
+  }
+
+  nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em 1em;
+    margin: 1vw;
+  }
+
+  .Create-Comment {
+    height: 15vw;
+    padding: 1vw;
+  }
+
+  .Close-Create-Comment {
+    margin: 1vw;
+  }
+
+  .CommentInfo {
+    width: 80vw;
+    transition: all 1s ease;
+  }
+
+  .CommentInfoBottom {
+    width: 65vw;
+    transition: all 1s ease;
+  }
+
+  p.Comment-Text {
+    max-width: 75vw;
+    transition: all 1s ease;
+  }
+
+  .Comment-Button {
+    font-size: small;
+    padding: 2vw;
+    transition: all 1s ease;
+  }
+}
+
+@media only screen and (max-width: 539px) {
+  /* header {
+    width: 90vw;
+    justify-content: space-between;
+  } */
+
+  button {
+    font-size: small;
+    transition: all 1s ease;
+  }
+
+  a {
+    font-size: small;
+    transition: all 0s ease;
+  }
+
+  nav a {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 0.7em 0.6em 0.4em;
+    margin: 1vw;
+    width: 15vw;
+  }
+
+  .Link-Text {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  Header {
+    margin: 0.5rem;
+    transition: all 1s ease;
+    padding: 0vw 0vw;
+  }
+
+  a.login {
+    font-size: small;
+    margin: 0;
+    padding: 2vw;
+    border-radius: 5px;
+  }
+
+  form .Login {
+    flex-direction: column;
+  }
+
+  .TopicCard {
+    width: 80vw;
+    transition: all 1s ease;
+  }
+
+  .Card {
+    width: 80vw;
+    transition: all 1s ease;
+  }
+
+  a.Article-Card {
+    width: 75vw;
+    margin: 1vw;
+    transition: all 1s ease;
+  }
+
+  img {
+    max-width: 70vw;
+    transition: all 1s ease;
+  }
+
+  .PageSelection {
+    padding: 2.5vw;
+    margin: 1vw;
+    transition: all 1s ease;
+  }
+
+  .Current_Page {
+    padding: 2.5vw;
+    margin: 1vw;
+    transition: all 1s ease;
+  }
+
+  p.Votes {
+    padding: 0vw 0.5vw;
+    display: flex;
+    align-items: end;
+    transition: all 1s ease;
+  }
+
+  .Article-Interactions {
+    font-size: small;
+    transition: all 1s ease;
+  }
+
+  section.Date {
+    /* padding-left: 8vw; */
+  }
+
+  .Open-Comments-Not-Logged-In {
+    /* left: 6.5vw; */
+  }
+
+  .Body {
+    max-width: 90vw;
+    padding: 3vw 0vw;
+    transition: all 1s ease;
+  }
+
+  p {
+    padding: 0vw;
+    transition: all 1s ease;
+  }
+
+  p.Comment-Text {
+    max-width: 100rem;
+    transition: all 1s ease;
+  }
+
+  .CommentInfo {
+    width: 85vw;
+    transition: all 1s ease;
+  }
+
+  .CommentDate {
+    font-size: small;
+    margin: 0vw;
+    padding: 3vw;
+    transition: all 1s ease;
+  }
+
+  .CommentInfoBottom {
+    width: 55vw;
+    transition: all 1s ease;
+  }
+
+  .Comment {
+    width: 30vw;
+    transition: all 1s ease;
+  }
+
+  .CommentInfoBottomSignedIn {
+    width: 55vw;
+    transition: all 1s ease;
+  }
+
+  .Vote-Count {
+    width: 13vw;
+    transition: all 1s ease;
+  }
+
+  .Article-Interactions {
+    max-width: 100vw;
+    transition: all 1s ease;
+  }
+
+  button.vote {
+    padding: 0vw 1vw;
+    transition: all 1s ease;
+  }
+
+  .Open-Comments-Logged-In {
+    right: 7vw;
+    /* transition: all 1s ease; */
+  }
+
+  #SideNote {
+    /* padding: 5vw; */
+    transition: all 1s ease;
+    max-width: 100vw;
+  }
+
+  .activeVote {
+    padding: 0vw 1vw;
+    transition: all 1s ease;
+  }
+
+  form.Login {
+    padding-bottom: 4vw;
+  }
+
+  .inputBox {
+    width: 40vw;
+    height: 4.5vw;
+    padding: 1vw 1vw;
+  }
+
+  .Create-Comment-Message {
+    flex-direction: column;
+  }
+
+  .Comment-Input-Box {
+    width: 60vw;
+  }
+
+  .Create-Comment-Section {
+    display: flex;
+  }
+
+  .Comment-Input-Box {
+    font-size: small;
+  }
+
+  #cancel {
+    margin: 2vw;
+  }
+}
+
+.linkText {
+  font-size: x-small;
+  padding: 0.2rem;
+}
+
+@media only screen and (max-width: 400px) {
+  section.Date {
+    padding-left: 0vw;
+    transition: all 1s ease;
+  }
+
+  .Open-Comments-Logged-In {
+    right: 5vw;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .Open-Comments-Logged-In {
+    right: 0vw;
+    padding: 2vw;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .Comment {
+    width: 41vw;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .Comment {
+    width: 39vw;
+  }
+
+  .Comment-Button {
+    padding: 0.75vw;
+    transition: all 1s ease;
+  }
+
+  .inputBox {
+    width: 10vw;
+    height: 1vw;
+  }
+
+  .CommentInfoBottom {
+    width: 55vw;
+  }
+
+  .CommentInfoBottomSignedIn {
+    width: 55vw;
+  }
+}
+
+@media only screen and (min-width: 1900px) {
+  .Comment-Button {
+    padding: 0.5vw;
+    transition: all 1s ease;
+  }
+}
+
+.signInMessage {
+  display: flex;
+  flex-direction: row;
+}
+
+/* {
+  outline: 1px solid #f00 !important;
+} */

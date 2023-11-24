@@ -15,6 +15,8 @@ function ArticlesSearch({
   setError,
   searchParams,
   setSearchParams,
+  isLightMode,
+  isDarkMode,
 }) {
   const [topicsList, setTopicsList] = useState([]);
 
@@ -136,12 +138,27 @@ function ArticlesSearch({
         setIsLoading(false);
       });
   }, [topic, sortBy, order, limit, p]);
-  if (isLoading) {
+  if (isLoading && isLightMode) {
     return (
       <div>
         <h3>Loading Articles...</h3>
         <SyncLoader
-          color="#36d7b7"
+          className="Loader"
+          color="#4b89ef"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
+      </div>
+    );
+  }
+  if (isLoading && isDarkMode) {
+    return (
+      <div>
+        <h3>Loading Articles...</h3>
+        <SyncLoader
+          className="Loader"
+          color="#ef5f4b"
           margin={3}
           size={15}
           speedMultiplier={0.5}
@@ -159,6 +176,7 @@ function ArticlesSearch({
               id="topic"
               value={topic}
               onChange={topicOnChange}
+              className="searchOptions"
             >
               <option value="">View All</option>
               {topicsList.map((topic) => {
@@ -178,6 +196,7 @@ function ArticlesSearch({
               id="sort_by"
               onChange={sortByOnChange}
               value={sortBy}
+              className="searchOptions"
             >
               <option value="author">Author</option>
               <option value="comment_count">Comment Count</option>
@@ -195,15 +214,16 @@ function ArticlesSearch({
               id="order"
               onChange={orderOnChange}
               value={order}
+              className="searchOptions"
             >
               <option value="asc">Asc</option>
               <option value="desc">Desc</option>
             </select>
           </section>
+          <button onClick={resetSearch} className="reset">
+            Reset
+          </button>
         </form>
-        <button onClick={resetSearch} className="reset">
-          Reset
-        </button>
       </section>
     );
   }
