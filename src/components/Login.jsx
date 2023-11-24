@@ -115,7 +115,9 @@ function Login({ setUser, isLightMode, isDarkMode }) {
             <input name="password" id="password" className="inputBox" />
           </span>
           <span id="Submit">
-            <button type="submit">Log In</button>
+            <button type="submit" className="submit-button">
+              Log In
+            </button>
           </span>
         </form>
         <Link to="/sign_up">Sign Up</Link>
@@ -153,7 +155,9 @@ function Login({ setUser, isLightMode, isDarkMode }) {
             <input name="password" id="password" className="inputBox" />
           </span>
           <span id="Submit">
-            <button type="submit">Log In</button>
+            <button type="submit" className="submit-button">
+              Log In
+            </button>
           </span>
         </form>
         <Link to="/sign_up">Sign Up</Link>

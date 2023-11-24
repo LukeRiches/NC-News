@@ -273,6 +273,7 @@ button:focus {
   .searchOptions {
     border-color: black;
     color: black;
+    background-color: white;
   }
 
   .Open-Comments-Not-Logged-In {
@@ -313,6 +314,14 @@ button:focus {
 
   .DeleteComment {
     color: black;
+  }
+
+  .submit-button {
+    color: black;
+  }
+
+  .active {
+    color: white;
   }
 }
 
