@@ -11,8 +11,9 @@ import Comments from "./components/Comments";
 import ErrorPage from "./components/ErrorPage";
 import Comment from "./components/Comment";
 import Login from "./components/Login";
-import HeaderAndNav from "../HeaderAndNav";
+import Users from "./components/Users";
 import { useMediaQuery } from "react-responsive";
+import SignUp from "./components/SignUp";
 
 function App() {
   const [user, setUser] = useState("Login");
@@ -42,10 +43,11 @@ function App() {
     <div className="App">
       <Header user={user} />
       <Nav user={user} />
-      {/* <HeaderAndNav user={user} small={small} medium={medium} large={large} /> */}
       <Routes>
         <Route path="*" element={<ErrorPage />} />
+
         <Route path="/" element={<Home />}></Route>
+
         <Route
           path="/login"
           element={
@@ -56,11 +58,14 @@ function App() {
             />
           }
         ></Route>
-        {/* <Route path="/sign_up" element={<SignUp />}></Route> */}
+
+        <Route path="/sign_up" element={<SignUp />}></Route>
+
         <Route
           path="/topics"
           element={<Topics isDarkMode={isDarkMode} isLightMode={isLightMode} />}
         ></Route>
+
         <Route
           path="/articles"
           element={
@@ -104,7 +109,8 @@ function App() {
           </Route>
         </Route>
 
-        {/* <Route path="/users" element={<Users/>}></Route> */}
+        <Route path="/users" element={<Users />} />
+
         {/* <Route path="/profile" element={<Profile user={user} />}></Route> */}
       </Routes>
     </div>
