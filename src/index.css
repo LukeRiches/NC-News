@@ -161,6 +161,22 @@ button:focus {
   color: white;
 }
 
+.Close-Create-Comment {
+  color: white;
+}
+
+.Open-Comments-Logged-In {
+  color: white;
+}
+
+#cancel {
+  color: white;
+}
+
+.DeleteComment {
+  color: white;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     /* color: #213547; */
@@ -272,6 +288,30 @@ button:focus {
   }
 
   .reset {
+    color: black;
+  }
+
+  #Submit {
+    color: black;
+  }
+
+  .Close-Create-Comment {
+    color: black;
+  }
+
+  .Close-Create-Comment {
+    color: black;
+  }
+
+  .Open-Comments-Logged-In {
+    color: black;
+  }
+
+  #cancel {
+    color: black;
+  }
+
+  .DeleteComment {
     color: black;
   }
 }
