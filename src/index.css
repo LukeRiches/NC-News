@@ -136,6 +136,47 @@ button:focus {
   color: white;
 }
 
+.PageSelection {
+  color: white;
+}
+
+.searchOptions {
+  border-color: white;
+  color: white;
+}
+
+.Open-Comments-Not-Logged-In {
+  color: white;
+}
+
+.Comment-Button {
+  color: white;
+}
+
+.vote {
+  color: white;
+}
+
+.reset {
+  color: white;
+}
+
+.Close-Create-Comment {
+  color: white;
+}
+
+.Open-Comments-Logged-In {
+  color: white;
+}
+
+#cancel {
+  color: white;
+}
+
+.DeleteComment {
+  color: white;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     /* color: #213547; */
@@ -219,6 +260,68 @@ button:focus {
 
   .Comment-Input-Box:focus {
     border-bottom: 2px solid #4b89ef;
+  }
+
+  #Submit {
+    color: black;
+  }
+
+  .PageSelection {
+    color: black;
+  }
+
+  .searchOptions {
+    border-color: black;
+    color: black;
+    background-color: white;
+  }
+
+  .Open-Comments-Not-Logged-In {
+    color: black;
+  }
+
+  .Comment-Button {
+    color: black;
+  }
+
+  .vote {
+    color: black;
+  }
+
+  .reset {
+    color: black;
+  }
+
+  #Submit {
+    color: black;
+  }
+
+  .Close-Create-Comment {
+    color: black;
+  }
+
+  .Close-Create-Comment {
+    color: black;
+  }
+
+  .Open-Comments-Logged-In {
+    color: black;
+  }
+
+  #cancel {
+    color: black;
+  }
+
+  .DeleteComment {
+    color: black;
+  }
+
+  .submit-button {
+    color: black;
+  }
+
+  .active {
+    color: white;
   }
 }
 
