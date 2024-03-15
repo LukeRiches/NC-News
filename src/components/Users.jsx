@@ -2,7 +2,7 @@ import plan from "../plan/5.Users.png";
 
 function Users() {
   return (
-    <section className="Users">
+    <main className="Users">
       <h2>Users</h2>
 
       <p id="SideNote">
@@ -26,7 +26,7 @@ function Users() {
       </p>
 
       <img src={plan} alt="A wireframe of my plan for the Users page" />
-    </section>
+    </main>
   );
 }
 
