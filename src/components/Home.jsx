@@ -2,7 +2,7 @@ import plan from "../plan/1.Home-Page.png";
 
 function Home() {
   return (
-    <section className="Home">
+    <main className="Home">
       <h2>Home</h2>
 
       <p id="SideNote">
@@ -17,7 +17,7 @@ function Home() {
       </p>
 
       <img src={plan} alt="A wireframe of my plan for the Home page" />
-    </section>
+    </main>
   );
 }
 

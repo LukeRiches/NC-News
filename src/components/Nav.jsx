@@ -11,22 +11,22 @@ function Nav({ user }) {
   if (user === "Login") {
     return (
       <nav>
-        <NavLink to="/">
+        <NavLink to="/" className="NavLink">
           <div className="Link-Text">
             Home {<FontAwesomeIcon icon={faHouse} />}
           </div>
         </NavLink>
-        <NavLink to="/topics">
+        <NavLink to="/topics" className="NavLink">
           <div className="Link-Text">
             Topics {<FontAwesomeIcon icon={faList} />}
           </div>
         </NavLink>
-        <NavLink to="/articles">
+        <NavLink to="/articles" className="NavLink">
           <div className="Link-Text">
             Articles {<FontAwesomeIcon icon={faBookOpen} />}
           </div>
         </NavLink>
-        <NavLink to="/users">
+        <NavLink to="/users" className="NavLink">
           <div className="Link-Text">
             Users {<FontAwesomeIcon icon={faUsers} />}
           </div>
@@ -36,22 +36,22 @@ function Nav({ user }) {
   } else {
     return (
       <nav>
-        <NavLink to="/">
+        <NavLink to="/" className="NavLink">
           <div className="Link-Text">
             Home {<FontAwesomeIcon icon={faHouse} />}
           </div>
         </NavLink>
-        <NavLink to="/topics">
+        <NavLink to="/topics" className="NavLink">
           <div className="Link-Text">
             Topics {<FontAwesomeIcon icon={faList} />}
           </div>
         </NavLink>
-        <NavLink to="/articles">
+        <NavLink to="/articles" className="NavLink">
           <div className="Link-Text">
             Articles {<FontAwesomeIcon icon={faBookOpen} />}
           </div>
         </NavLink>
-        <NavLink to="/users">
+        <NavLink to="/users" className="NavLink">
           <div className="Link-Text">
             Users {<FontAwesomeIcon icon={faUsers} />}
           </div>

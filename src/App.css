@@ -6,25 +6,43 @@
   text-align: center;
 }
 
-/* * {
-  transition: all 1s ease;
-} */
+:root {
+  --background-colour: #000000;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-colour: #ffffff;
+  }
+}
 
 header {
-  position: relative;
-  /* width: 90vw; */
-  margin: 1rem;
+  /* margin: 1rem; */
   top: 0;
   right: 0;
-  z-index: 1000;
+  /* z-index: 1000; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: all 1s ease;
+  height: auto;
+  margin: 0;
+  position: sticky;
+  top: -1px;
+  background: linear-gradient(var(--background-colour) 90%, rgba(0, 0, 0, 0));
+  box-shadow: 0 0 0 100vmax var(--background-colour);
+  clip-path: inset(0 -100vmax);
+  z-index: 1;
 }
 
 #Search {
   transition: all 1s ease;
+  position: sticky;
+  top: 18%;
+  z-index: 1;
+  background: linear-gradient(var(--background-colour) 90%, rgba(0, 0, 0, 0));
+  box-shadow: 0 0 0 100vmax var(--background-colour);
+  clip-path: inset(0 -100vmax);
 }
 
 .search {
@@ -52,6 +70,19 @@ select.searchOptions {
 nav {
   display: flex;
   justify-content: center;
+  position: sticky;
+  top: 9%;
+  z-index: 1;
+  background: linear-gradient(var(--background-colour) 90%, rgba(0, 0, 0, 0));
+  box-shadow: 0 0 0 100vmax var(--background-colour);
+  clip-path: inset(0 -100vmax);
+  padding: 3vh;
+}
+
+.NavLink {
+  position: sticky;
+  top: 15px;
+  z-index: 3;
 }
 
 p.Comment-Text {
@@ -178,6 +209,7 @@ button.vote:active {
 
 .login {
   margin: 0vw;
+  z-index: 2;
 }
 
 .Comment {
@@ -280,6 +312,7 @@ button.vote:active {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    top: 19%;
   }
 
   form {
@@ -670,6 +703,7 @@ button.vote:active {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 1vh;
   }
 
   a.Article-Card {
@@ -900,6 +934,16 @@ button.vote:active {
     padding: 2vw;
     transition: all 1s ease;
   }
+
+  nav {
+    top: 7%;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  #Search {
+    top: 20%;
+  }
 }
 
 @media only screen and (max-width: 539px) {
@@ -1117,6 +1161,11 @@ button.vote:active {
     padding: 1.5vw;
     margin-left: 1vw;
   }
+
+  #Search {
+    top: 19%;
+    padding: 2vh;
+  }
 }
 
 .linkText {
@@ -1143,6 +1192,10 @@ button.vote:active {
 @media only screen and (min-width: 1400px) {
   .Comment {
     width: 41vw;
+  }
+
+  #Search {
+    top: 20%;
   }
 }
 
