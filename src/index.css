@@ -177,6 +177,10 @@ button:focus {
   color: white;
 }
 
+.Home-Icons {
+  color: #ef5f4b;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     /* color: #213547; */
@@ -323,6 +327,10 @@ button:focus {
 
   .active {
     color: white;
+  }
+
+  .Home-Icons {
+    color: #4b89ef;
   }
 }
 

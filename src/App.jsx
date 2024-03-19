@@ -46,7 +46,10 @@ function App() {
       <Routes>
         <Route path="*" element={<ErrorPage />} />
 
-        <Route path="/" element={<Home />}></Route>
+        <Route
+          path="/"
+          element={<Home isDarkMode={isDarkMode} isLightMode={isLightMode} />}
+        ></Route>
 
         <Route
           path="/login"
