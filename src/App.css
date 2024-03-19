@@ -946,7 +946,11 @@ button.vote:active {
 @media only screen and (max-width: 590px) {
   #Search {
     top: 20%;
-    background: #ffffff;
+    background: var(--background-colour);
+  }
+
+  nav {
+    background: var(--background-colour);
   }
 }
 
