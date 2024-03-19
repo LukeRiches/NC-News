@@ -93,6 +93,7 @@ function Home({ isLightMode, isDarkMode }) {
             />
           </h3>
         </section>
+        <button>View All Articles</button>
       </main>
     );
   }
