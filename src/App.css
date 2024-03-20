@@ -8,11 +8,13 @@
 
 :root {
   --background-colour: #121212;
+  --profile-picture-background-Colour: #2f2c2c;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --background-colour: #ffffff;
+    --profile-picture-background-Colour: #eaf2f6;
   }
 }
 
@@ -302,6 +304,32 @@ button.vote:active {
   outline: 1px solid white;
 }
 
+#Users-List {
+  gap: 0;
+}
+
+#User-Item {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 1em 1.6em;
+  background-color: var(--profile-picture-background-Colour);
+}
+
+.Profile-Picture {
+  background: white;
+  border-radius: 100%;
+  object-fit: contain;
+  height: 10vw;
+  width: 10vw;
+}
+
+#Username {
+  margin: auto;
+}
+
 @media only screen and (min-width: 850px) {
   img {
     max-width: 50vw;
@@ -447,6 +475,16 @@ button.vote:active {
     cursor: pointer;
     transition: border-color 0.25s;
     width: 30vw;
+  }
+
+  #User-Item {
+    transition: border-color 0.25s;
+    width: 40vw;
+  }
+
+  .Profile-Picture {
+    height: 10vw;
+    width: 10vw;
   }
 
   #SideNote {
@@ -679,6 +717,20 @@ button.vote:active {
     width: 90vw;
   }
 
+  #User-Item {
+    transition: border-color 0.25s;
+    width: 90vw;
+  }
+
+  .Profile-Picture {
+    /* height: 30vw;
+    width: 30vw; */
+  }
+
+  #Users-List {
+    gap: 1vh;
+  }
+
   .reset {
     padding: 0.5em 0.5em;
     margin-left: 10px;
@@ -775,6 +827,13 @@ button.vote:active {
   top: 7px;
 }
 
+@media only screen and (min-width: 1000px) {
+  .Profile-Picture {
+    height: 8vw;
+    width: 8vw;
+  }
+}
+
 @media only screen and (min-width: 1250px) {
   a.Article-Card {
     width: 40vw;
@@ -862,6 +921,11 @@ button.vote:active {
     border: 1px solid;
     border-radius: 4px;
   }
+
+  .Profile-Picture {
+    height: 8vw;
+    width: 8vw;
+  }
 }
 
 @media only screen and (max-width: 1250px) {
@@ -879,6 +943,15 @@ button.vote:active {
   .TopicCard {
     width: 40vw;
   }
+
+  #User-Item {
+    width: 40vw;
+  }
+
+  .Profile-Picture {
+    /* height: 30vw;
+    width: 30vw; */
+  }
 }
 
 @media only screen and (max-width: 775px) {
@@ -893,6 +966,16 @@ button.vote:active {
   .TopicCard {
     width: 50vw;
     transition: all 1s ease;
+  }
+
+  #User-Item {
+    width: 50vw;
+    transition: all 1s ease;
+  }
+
+  .Profile-Picture {
+    height: 15vw;
+    width: 15vw;
   }
 
   .Card {
@@ -1005,6 +1088,20 @@ button.vote:active {
   .TopicCard {
     width: 80vw;
     transition: all 1s ease;
+  }
+
+  #User-Item {
+    width: 80vw;
+    transition: all 1s ease;
+  }
+
+  .Profile-Picture {
+    height: 25vw;
+    width: 25vw;
+  }
+
+  #Users-List {
+    gap: 2vh;
   }
 
   .Card {
@@ -1204,6 +1301,15 @@ button.vote:active {
 
   #Search {
     top: 20%;
+  }
+
+  .Profile-Picture {
+    height: 5vw;
+    width: 5vw;
+  }
+
+  #User-Item {
+    width: 30vw;
   }
 }
 

@@ -64,6 +64,10 @@ function ArticlesCard({
     navigate(`/article/${article.article_id}`);
   }
 
+  // console.log(article.created_at.slice(0, 10).split("-").reverse().join("/");
+  // 2020-03-22T14:25:00.000Z
+  // <section className="Date">{article.created_at.toLocaleDateString()}</section>;
+
   if (
     user === "Login" &&
     article.body &&
@@ -100,7 +104,10 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date"> {article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {" "}
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -141,7 +148,9 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date">{article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -184,7 +193,10 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date"> {article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {" "}
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -231,7 +243,10 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date"> {article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {" "}
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -281,7 +296,10 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date"> {article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {" "}
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -334,7 +352,10 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date"> {article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {" "}
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -383,7 +404,10 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date"> {article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {" "}
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -435,7 +459,10 @@ function ArticlesCard({
             {article.comment_count}
           </button>
 
-          <section className="Date"> {article.created_at.slice(0, 10)}</section>
+          <section className="Date">
+            {" "}
+            {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+          </section>
         </section>
       </article>
     );
@@ -459,7 +486,10 @@ function ArticlesCard({
           <section className="Articles-Interactions">
             <section>Votes: {article.votes}</section>
             <section>Comments: {article.comment_count}</section>
-            <section> {article.created_at.slice(0, 10)}</section>
+            <section>
+              {" "}
+              {article.created_at.slice(0, 10).split("-").reverse().join("/")}
+            </section>
           </section>
         </Link>
       </li>

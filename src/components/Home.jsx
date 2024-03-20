@@ -36,6 +36,9 @@ function Home({ isLightMode, isDarkMode }) {
       setIsLoading(false);
     });
 
+  if (error) {
+    return <ErrorPage error={error}></ErrorPage>;
+  }
   if (isLoading && isLightMode) {
     return (
       <div>
