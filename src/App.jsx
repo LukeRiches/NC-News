@@ -112,7 +112,10 @@ function App() {
           </Route>
         </Route>
 
-        <Route path="/users" element={<Users />} />
+        <Route
+          path="/users"
+          element={<Users isDarkMode={isDarkMode} isLightMode={isLightMode} />}
+        />
 
         {/* <Route path="/profile" element={<Profile user={user} />}></Route> */}
       </Routes>

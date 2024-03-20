@@ -1,33 +1,75 @@
-import plan from "../plan/5.Users.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {} from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { SyncLoader } from "react-spinners";
+import UsersList from "./UsersList";
 
-function Users() {
-  return (
-    <main className="Users">
-      <h2>Users</h2>
+function Users({ isLightMode, isDarkMode }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [usersArray, setUsersArray] = useState([]);
 
-      <p id="SideNote">
-        The Users page currently has no functionality and is just a placeholder.
-        <br />
-        <br />
-        I'm currently uncertain on my plan for this page as it feels a little
-        invasive to just list all active users and their avatars. But I like the
-        idea of implementing kudos to authors so other users can gain a sense of
-        the relevancy of their content. I also like the idea of a direct
-        messaging service.
-        <br />
-        <br />
-        However, the current active pages are Login, Topics, Articles and each
-        Article and its related comments.
-      </p>
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`https://northcoders-news-api-phe8.onrender.com/api/users`)
+      .then(({ data }) => {
+        setIsLoading(false);
+        setError(null);
+        setUsersArray(data.users);
+      })
+      .catch((err) => {
+        setError(err.response);
+        setIsLoading(false);
+      });
+  }, []);
 
-      <p id="SideNote">
-        But beneath is the wireframe with my plan for the page, which I'm
-        currently deciding on!
-      </p>
+  // console.log(isLoading);
+  // console.log(isLightMode);
 
-      <img src={plan} alt="A wireframe of my plan for the Users page" />
-    </main>
-  );
+  if (error) {
+    return <ErrorPage error={error}></ErrorPage>;
+  }
+  if (isLoading && isLightMode) {
+    return (
+      <div>
+        <h3>Loading Users...</h3>
+        <SyncLoader
+          className="Loader"
+          color="#4b89ef"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
+      </div>
+    );
+  }
+  if (isLoading && isDarkMode) {
+    return (
+      <div>
+        <h3>Loading Users...</h3>
+        <SyncLoader
+          className="Loader"
+          color="#ef5f4b"
+          margin={3}
+          size={15}
+          speedMultiplier={0.5}
+        />
+      </div>
+    );
+  } else {
+    return (
+      <main className="Users">
+        <h2>Users</h2>
+        <UsersList
+          usersArray={usersArray}
+          isLoading={isLoading}
+          error={error}
+        />
+      </main>
+    );
+  }
 }
 
 export default Users;
