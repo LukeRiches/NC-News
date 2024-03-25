@@ -1,9 +1,14 @@
+body {
+  background: #121212;
+}
+
 #root {
   max-width: 90vw;
   max-height: 90vw;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: #121212;
 }
 
 :root {
@@ -12,6 +17,13 @@
 }
 
 @media (prefers-color-scheme: light) {
+  body {
+    background: #ffffff;
+  }
+
+  #root {
+    background: #ffffff;
+  }
   :root {
     --background-colour: #ffffff;
     --profile-picture-background-Colour: #eaf2f6;
